@@ -6,7 +6,7 @@ header {
 }
 
 footer {
-  height: 300px;
+  height: 323px;
   margin: 0 auto;
   background-color: #F7F9FA;
 }
@@ -28,9 +28,11 @@ nav {
 
 .contents-container {
   width: 1280px;
+  height: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .footer-container {
@@ -101,6 +103,10 @@ nav {
 }
 
 /* contents */
+
+.contents {
+  height: 520px;
+}
 
 .today-story {
   width: 640px;
@@ -191,11 +197,11 @@ nav {
   height: 220px;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 55px 0;
 }
 
 .footer1 {
-  width: 30%;
+  width: 28%;
   height: 100%;
 }
 
@@ -209,6 +215,7 @@ nav {
   height: 100%;
   display: flex;
   justify-content: center;
+  font-size: 12px;
 }
 
 .footer2 > div {
@@ -220,6 +227,19 @@ nav {
   height: 100%;
   font-size: 11px;
 }
+
+.footer-img {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin: 10px auto;
+}
+
+.footer-img > div {
+  margin: 5px;
+  }
+
+
 
 
 
