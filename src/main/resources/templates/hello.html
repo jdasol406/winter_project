@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <title>Insert title here</title>
   <link rel="stylesheet" type="text/css" href="/css/hello.css"/>
-<!--  <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>-->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <script src="/js/jquery-3.7.1.min.js"></script>
-  <script src="/js/slick.min.js"></script>
-  <script src="/js/slick.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
   <div class="page"> <!-- wrap -->
@@ -26,10 +25,59 @@
         <div class="header-menu2">
           <div id="top-menu2">홈 추천 집들이 집사진 살림수납 콜렉터블 홈스토랑 핫플레이스 육아 플렌테리어 반려동물</div>          
           <div class="top-btn2">
-            <div style="margin-left: 189px;">⌵</div>
-            <div style="margin-left: 15px; font-weight: 700;">1</div>
-            <div style="margin-left: 10px; color:red">new</div>
-            <div style="text-align: center; margin-left: 10px;">모달이불세트</div>
+            <div style="margin-left: 160px;">⌵</div>
+            <div class="rolling-rank">
+              <div class="rolling" id="rolling-1">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">1</div>
+                <div style="width:30px; margin-left: 10px; color:red">new</div>
+                <div style="width:100px; margin-left: 10px">모달이불세트</div>
+              </div>
+              <div class="rolling" id="rolling-2">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">2</div>
+                <div style="width:30px; margin-left: 10px; color:dodgerblue; text-align: center;">▾</div>
+                <div style="width:100px; margin-left: 10px">서랍장</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">3</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">크리스마스 트리</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">4</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">옷장</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">5</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">공기정화식물</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">6</div>
+                <div style="width:30px; margin-left: 10px; color:dodgerblue; text-align: center;">▾</div>
+                <div style="width:102px; margin-left: 10px">아이패드 거치대</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">7</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">new</div>
+                <div style="width:102px; margin-left: 10px">미니 화장대</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">8</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">반원 테이블</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">9</div>
+                <div style="width:30px; margin-left: 10px; color:dodgerblue; text-align: center;">▾</div>
+                <div style="width:102px; margin-left: 10px">경추베개</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">10</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">무드등</div>
+              </div>
+            </div>
             <div id="mouseover">⌵</div>
           </div>
           <div class="mouseover-front">
@@ -54,141 +102,221 @@
       <div class="contents-container">
         <section class="today-story">
           <div class="today-menu">
-            <span>오늘의 스토리</span>
-            <span>
-              인기 &nbsp; &nbsp; &nbsp;
-              투자+ &nbsp; &nbsp; &nbsp;
-              엔터+ &nbsp; &nbsp; &nbsp;
-              자동차 &nbsp; &nbsp; &nbsp;
-              라이프 &nbsp; &nbsp; &nbsp;
-              여행 &nbsp; &nbsp; &nbsp;
-              푸드</span>
-            <span> < </span>  &nbsp; <span> > </span>
-          </div>
-          <div class="today-box">
-            <div class="today-news" id="today-news1">
-              <article class="news" id="news1">
-                <div class="news-img" id="news1-img">
-                  <img src="./img/news/news1.JPG">
-                </div>
-                <div class="news-text" id="news1-text">
-                  <div class="news-content">
-                    '이젠 성공해도 이 모델' <br>
-                    국산 SUV 확 바뀌었다
-                  </div>
-                  <div class="news-name" id="news1-name">매일경제</div>
-                </div>
-              </article>
-              <article class="news" id="news2">
-                <div class="news-img" id="news2-img">
-                  <img src="./img/news/news2.JPG">
-                </div>
-                <div class="news-text" id="news2-text">
-                  <div class="news-content">
-                    페라리 닮은 준대형 SUV <br>
-                    공개되자 말 그대로 '난리'
-                  </div>
-                  <div class="news-name" id="news1-name">위드카뉴스</div>
-                </div>
-              </article>
-              <article class="news" id="news3">
-                <div class="news-img" id="news3-img">
-                  <img src="./img/news/news3.JPG">
-                </div>
-                <div class="news-text" id="news3-text">
-                  <div class="news-content">
-                    주차하고 돌아왔더니 <br>
-                    차가 바다에 있었다
-                  </div>
-                  <div class="news-name" id="news3-name">더카뷰</div>
-                </div>
-              </article>
-              <article class="news" id="news4">
-                <div class="news-img" id="news4-img">
-                  <img src="./img/news/news4.JPG">
-                </div>
-                <div class="news-text" id="news4-text">
-                  <div class="news-content">
-                    미니버스로 만든 캠핑카 <br>
-                    이렇게 만든 이유는요
-                  </div>
-                  <div class="news-name" id="news4-name">M투데이</div>
-                </div>
-              </article>
+            <div style="font-weight: 600; font-size: 19px;">오늘의 스토리</div>
+            <div class="today-story-menu">
+              <div id="menu1">인기</div>
+              <div id="menu2">투자+</div>
+              <div id="menu3">엔터+</div>
+              <div id="menu4" style="margin-right: 4px">자동차</div>
+              <div id="menu5">라이프</div>
+              <div id="menu6">여행</div>
+              <div id="menu7">푸드</div>
             </div>
-            <div class="today-news" id="today-news2">
-              <article class="news" id="news5">
-                <div class="news-img" id="news5-img">
-                  <img src="./img/news/news5.jpeg">
-                </div>
-                <div class="news-text" id="news5-text">
-                  <div class="news-content">
-                    전청조가 선물했던 자동차 <br>
-                    사실 '이것'이었다
+            <div class="arrows" id="prev-arrow"> ≤ </div> 
+            <div class="arrows" id="next-arrow"> ≥ </div>
+          </div>  
+          <div class="today-box">
+            <div id="wrap-box1">
+              <div class="today-news" id="today-news1">
+                <article class="news" id="news1">
+                  <div class="news-img" id="news1-img">
+                    <img src="./img/news/news1.JPG">
                   </div>
-                  <div class="news-name" id="news5-name">더카뷰</div>
-                </div>
-              </article>
-              <article class="news" id="news6">
-                <div class="news-img" id="news6-img">
-                  <img src="./img/news/news6.JPG">
-                </div>
-                <div class="news-text" id="news6-text">
-                  <div class="news-content">
-                    새로 나온 K5 신형 <br>
-                    젊은이들 선호하는 이유
+                  <div class="news-text" id="news1-text">
+                    <div class="news-content">
+                      '이젠 성공해도 이 모델' <br>
+                      국산 SUV 확 바뀌었다
+                    </div>
+                    <div class="news-name" id="news1-name">매일경제</div>
                   </div>
-                  <div class="news-name" id="news6-name">한국경제</div>
-                </div>
-              </article>
-              <article class="news" id="news7">
-                <div class="news-img" id="news7-img">
-                  <img src="./img/news/news7.JPG">
-                </div>
-                <div class="news-text" id="news7-text">
-                  <div class="news-content">
-                    '디자인 미쳤다' 르노가 <br>
-                    벼르고 만든 콘셉트카
+                </article>
+                <article class="news" id="news2">
+                  <div class="news-img" id="news2-img">
+                    <img src="./img/news/news2.JPG">
                   </div>
-                  <div class="news-name" id="news7-name">위드카뉴스</div>
-                </div>
-              </article>
-              <article class="news" id="news8">
-                <div class="news-img" id="news8-img">
-                  <img src="./img/news/news8.JPG">
-                </div>
-                <div class="news-text" id="news8-text">
-                  <div class="news-content">
-                    999계단까지 오른 SUV <br>
-                    이번엔 급류 뚫었다
+                  <div class="news-text" id="news2-text">
+                    <div class="news-content">
+                      페라리 닮은 준대형 SUV <br>
+                      공개되자 말 그대로 '난리'
+                    </div>
+                    <div class="news-name" id="news1-name">위드카뉴스</div>
                   </div>
-                  <div class="news-name" id="news8-name">EV라운지</div>
-                </div>
-              </article>
-              <article class="news" id="news8">
-                <div class="news-img" id="news8-img">
-                  <img src="./img/news/news8.JPG">
-                </div>
-                <div class="news-text" id="news8-text">
-                  <div class="news-content">
-                    999계단까지 오른 SUV <br>
-                    이번엔 급류 뚫었다
+                </article>
+                <article class="news" id="news3">
+                  <div class="news-img" id="news3-img">
+                    <img src="./img/news/news3.JPG">
                   </div>
-                  <div class="news-name" id="news8-name">EV라운지</div>
-                </div>
-              </article>
+                  <div class="news-text" id="news3-text">
+                    <div class="news-content">
+                      주차하고 돌아왔더니 <br>
+                      차가 바다에 있었다
+                    </div>
+                    <div class="news-name" id="news3-name">더카뷰</div>
+                  </div>
+                </article>
+                <article class="news" id="news4">
+                  <div class="news-img" id="news4-img">
+                    <img src="./img/news/news4.JPG">
+                  </div>
+                  <div class="news-text" id="news4-text">
+                    <div class="news-content">
+                      미니버스로 만든 캠핑카 <br>
+                      이렇게 만든 이유는요
+                    </div>
+                    <div class="news-name" id="news4-name">M투데이</div>
+                  </div>
+                </article>
+              </div>
+              <div class="today-news" id="today-news2">
+                <article class="news" id="news5">
+                  <div class="news-img" id="news5-img">
+                    <img src="./img/news/news5.jpeg">
+                  </div>
+                  <div class="news-text" id="news5-text">
+                    <div class="news-content">
+                      전청조가 선물했던 자동차 <br>
+                      사실 '이것'이었다
+                    </div>
+                    <div class="news-name" id="news5-name">더카뷰</div>
+                  </div>
+                </article>
+                <article class="news" id="news6">
+                  <div class="news-img" id="news6-img">
+                    <img src="./img/news/news6.JPG">
+                  </div>
+                  <div class="news-text" id="news6-text">
+                    <div class="news-content">
+                      새로 나온 K5 신형 <br>
+                      젊은이들 선호하는 이유
+                    </div>
+                    <div class="news-name" id="news6-name">한국경제</div>
+                  </div>
+                </article>
+                <article class="news" id="news7">
+                  <div class="news-img" id="news7-img">
+                    <img src="./img/news/news7.JPG">
+                  </div>
+                  <div class="news-text" id="news7-text">
+                    <div class="news-content">
+                      '디자인 미쳤다' 르노가 <br>
+                      벼르고 만든 콘셉트카
+                    </div>
+                    <div class="news-name" id="news7-name">위드카뉴스</div>
+                  </div>
+                </article>
+                <article class="news" id="news8">
+                  <div class="news-img" id="news8-img">
+                    <img src="./img/news/news8.JPG">
+                  </div>
+                  <div class="news-text" id="news8-text">
+                    <div class="news-content">
+                      999계단까지 오른 SUV <br>
+                      이번엔 급류 뚫었다
+                    </div>
+                    <div class="news-name" id="news8-name">EV라운지</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="wrap-box2">
+              <div>
+                <article class="news" id="news8">
+                  <div class="news-img" id="news8-img">
+                    <img src="./img/news/news8.JPG">
+                  </div>
+                  <div class="news-text" id="news8-text">
+                    <div class="news-content">
+                      999계단까지 오른 SUV <br>
+                      이번엔 급류 뚫었다
+                    </div>
+                    <div class="news-name" id="news8-name">EV라운지</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="wrap-box3">
+              <div>
+                <article class="news" id="news8">
+                  <div class="news-img" id="news8-img">
+                    <img src="./img/news/news8.JPG">
+                  </div>
+                  <div class="news-text" id="news8-text">
+                    <div class="news-content">
+                      999계단까지 오른 SUV <br>
+                      이번엔 급류 뚫었다
+                    </div>
+                    <div class="news-name" id="news8-name">EV라운지</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="wrap-box4">
+              <div>
+                <article class="news" id="news8">
+                  <div class="news-img" id="news8-img">
+                    <img src="./img/news/news8.JPG">
+                  </div>
+                  <div class="news-text" id="news8-text">
+                    <div class="news-content">
+                      999계단까지 오른 SUV <br>
+                      이번엔 급류 뚫었다
+                    </div>
+                    <div class="news-name" id="news8-name">EV라운지</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="wrap-box5">
+              <div>
+                <article class="news" id="news8">
+                  <div class="news-img" id="news8-img">
+                    <img src="./img/news/news8.JPG">
+                  </div>
+                  <div class="news-text" id="news8-text">
+                    <div class="news-content">
+                      999계단까지 오른 SUV <br>
+                      이번엔 급류 뚫었다
+                    </div>
+                    <div class="news-name" id="news8-name">EV라운지</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="wrap-box6">
+              <div>
+                <article class="news" id="news8">
+                  <div class="news-img" id="news8-img">
+                    <img src="./img/news/news8.JPG">
+                  </div>
+                  <div class="news-text" id="news8-text">
+                    <div class="news-content">
+                      999계단까지 오른 SUV <br>
+                      이번엔 급류 뚫었다
+                    </div>
+                    <div class="news-name" id="news8-name">EV라운지</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="wrap-box7">
+              <div>
+                <article class="news" id="news8">
+                  <div class="news-img" id="news8-img">
+                    <img src="./img/news/news8.JPG">
+                  </div>
+                  <div class="news-text" id="news8-text">
+                    <div class="news-content">
+                      999계단까지 오른 SUV <br>
+                      이번엔 급류 뚫었다
+                    </div>
+                    <div class="news-name" id="news8-name">EV라운지</div>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
         </section>
       </div>
-    </div>
-    <div style="display: flex;" class="test">
-      <div style="background-color: deeppink; width: 50px; height: 50px;">1</div>
-      <div style=" width: 50px; height: 50px;"> 2</div>
-      <div style="background-color: greenyellow; width: 50px; height: 50px;">3</div>
-      <div style="background-color: deeppink; width: 50px; height: 50px;">4</div>
-      <div style="background-color: blue; width: 50px; height: 50px;"> 5</div>
-      <div style="background-color: greenyellow; width: 50px; height: 50px;">6</div>
     </div>
     <footer>
       <div class="footer-container">

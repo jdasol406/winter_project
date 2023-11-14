@@ -103,6 +103,16 @@ nav {
   position: relative;
 }
 
+/* rolling */
+.rolling {
+  display: flex;
+}
+
+.rolling-rank {
+  display: flex;
+  width: 150px;
+}
+
 #mouseover {
   width: 70px;
   display: flex;
@@ -156,28 +166,43 @@ nav {
 .today-menu {
   width: 640px;
   height: 50px;
+  font-weight: 600;
   display: flex;
   align-items: center;
   padding: 1px 8px;
 }
 
-.today-menu :nth-child(1) {
-  font-weight: 600;
-  font-size: 19px;
+.today-story-menu{
+  width: 363px;
+  display: flex;
+  margin-left: 13px;
+  justify-content: center;
+  text-align: center;
 }
 
-.today-menu :nth-child(2) {
-  margin-left: 16px;
-  font-size: 14px;
-}
-
-.today-menu :nth-child(3) {
-  margin-left: 112px;
+.today-story-menu div{
+  width: 60px;
 }
 
 .today-box {
   width: 640px;
   height: 350px;
+}
+
+.arrows {
+  cursor: pointer;
+}
+
+#prev-arrow {
+  margin-left: 110px;
+}
+
+#next-arrow {
+  margin: 0 10px;
+}
+
+.wrap-box {
+  
 }
 
 .today-news {
