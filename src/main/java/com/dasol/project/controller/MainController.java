@@ -19,5 +19,13 @@ public class MainController {
     
     return "hello";
   }
+  
+  @GetMapping("/join")
+  public String join() throws Exception {
+    
+    String join = mapper.select();
+    
+    return "join";
+  }
 
 }
