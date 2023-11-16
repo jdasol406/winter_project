@@ -67,6 +67,22 @@
   disabled: disabled
 }
 
+.hidden-text {
+  margin: 10px 0; 
+  font-size: 14px; 
+  color: red; 
+  font-weight: 300;
+  display: none;
+}
+
+.hidden-text2 {
+  margin: 10px 0; 
+  font-size: 14px; 
+  color: red; 
+  font-weight: 300;
+  display: none;
+}
+
 .join-input {
   width: 352px;
   height: 40px;
