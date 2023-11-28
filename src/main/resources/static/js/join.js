@@ -142,6 +142,7 @@ $('#email-btn').click(emailButtonClick);
 
 /* 닉네임 함수 */
   $('#nickname').on('click', function() {
+    console.log($(this).val().length);
     if ($(this).val() === '') {
       resetStyles('#nickname-hidden2', '#nickname', '#nickname-title');
     } else {
@@ -153,8 +154,13 @@ $('#email-btn').click(emailButtonClick);
   $('#nickname').on('input', function() {
     if ($(this).val() === '') {
       resetStyles('#nickname-hidden2', '#nickname', '#nickname-title');
-    } else {
+    } else if($(this).val().length === 1) {
+      resetStyles('#nickname-hidden3', '#nickname', '#nickname-title');
+      $('#nickname-hidden2').css('display','none');
+    }
+    else {
       onStyles('#nickname-hidden2', '#nickname', '#nickname-title');
+      $('#nickname-hidden3').css('display','none');
       return true;
     }
   });
@@ -170,6 +176,7 @@ $('#all-check').on('change', function() {
 // 모든 항목이 check가 아닐 경우 all-check가 풀리게
 $('.checkbox-btn').on('click', function() {
   console.log('checkbox-check');
+  
   if (
     $('#check-age').prop('checked') &&
     $('#check-provision').prop('checked') &&
@@ -184,10 +191,7 @@ $('.checkbox-btn').on('click', function() {
     $('#all-check').prop('checked', false);
   }
   
-  
 });
-
-
 
 
 /* 회원가입하기 버튼 함수 */
@@ -198,6 +202,7 @@ $('#join-btn').on('click', function() {
   console.log("닉네임",checkNickname());
   console.log("전체동의",checkAgreement());
   console.log("로봇",checkRobot());
+  
     // 각 함수의 반환 값이 모두 true인지 확인
     if (
       checkEmail() &&
@@ -238,13 +243,11 @@ $('#join-btn').on('click', function() {
       onStyles('#provision-hidden2', '.provision-box', '#provision-title');
     }
     if (!checkRobot()) {
-      resetStyles('#robot-hidden2', '.robot-area', '#robot-title');
+      $('#robot-hidden2').css('display','block');
     }else if(checkRobot()){
-      onStyles('#robot-hidden2', '.robot-area', '#robot-title');
+      $('#robot-hidden2').css('display','none');
     }
-      
       console.log('회원가입 실패');
-      
     }
   });
 
@@ -269,13 +272,17 @@ $('#join-btn').on('click', function() {
     if(
       $('#check-age').is(':checked') &&
       $('#check-provision').is(':checked') &&
-      $('#check-use').is(':checked')
+      $('#check-use').is(':checked') 
     ){
-      console.log("agree");
+      onStyles('#provision-hidden2', '.provision-box', '#provision-title');
+      return true;
+    }else if(
+       $('#all-check').is(':checked') 
+    ){
       onStyles('#provision-hidden2', '.provision-box', '#provision-title');
       return true;
     } else {
-      console.log("not agree");
+      console.log();
       return false;
     }  
   }
@@ -283,39 +290,50 @@ $('#join-btn').on('click', function() {
   $('#check-age').on('click', function() {
         if(checkAgreement()){
           onStyles('#provision-hidden2', '.provision-box', '#provision-title');
-          console.log("robot-true!");
-        } 
+        } else {
+        resetStyles('#provision-hidden2', '.provision-box', '#provision-title');
+      }
+
     });
     
   $('#check-provision').on('click', function() {
       if(checkAgreement()){
         onStyles('#provision-hidden2', '.provision-box', '#provision-title');
-        console.log("robot-true!");
-      } 
+      } else {
+        resetStyles('#provision-hidden2', '.provision-box', '#provision-title');
+      }
   });
   
   $('#check-use').on('click', function() {
         if(checkAgreement()){
           onStyles('#provision-hidden2', '.provision-box', '#provision-title');
-          console.log("robot-true!");
-        } 
+        } else {
+        resetStyles('#provision-hidden2', '.provision-box', '#provision-title');
+      }
+
+    });
+    
+    $('#all-check').on('click', function() {
+        if($('#all-check').is(':checked')){
+          onStyles('#provision-hidden2', '.provision-box', '#provision-title');
+        } else {
+        resetStyles('#provision-hidden2', '.provision-box', '#provision-title');
+      }
+
     });
   
 
   function checkRobot() {
     return $('#robot-check').is(':checked');
-
   }
   
   $('#robot-check').on('click', function() {
         if(checkRobot()){
-          onStyles('#robot-hidden2', '.robot-area', '#robot-title');
+          $('#robot-hidden2').css('display','none');
           console.log("robot-true!");
         } else {
-          resetStyles('#robot-hidden2', '.robot-area', '#robot-title');
+          $('#robot-hidden2').css('display','block');
         }
     });
-
-
 
 });

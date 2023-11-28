@@ -58,8 +58,8 @@
           <div class="nickname">
             <div class="title" id="nickname-title">닉네임</div>
             <div style="margin-bottom: 10px; font-size: 14px; color: #828c94; font-weight: 300;">다른 유저와 겹치지 않도록 입력해주세요. (2~15자)</div>
-            <input class="join-input" id="nickname" type="text" placeholder="  별명 (2~15자)">
-            <div class="hidden-text" id="nickname-hidden">사용 중인 별명입니다.</div>
+            <input class="join-input" id="nickname" minlength="2" maxlength="15" type="text" placeholder="  별명 (2~15자)">
+            <div class="hidden-text" id="nickname-hidden3">2자 이상 입력해주세요.</div>
             <div class="hidden-text2" id="nickname-hidden2">필수 입력 항목입니다.</div>
           </div>
           <div class="provision">
@@ -91,15 +91,15 @@
                 <span class="choose">(선택)</span>
               </div>
             </div>
+            <div class="hidden-text2" id="provision-hidden2">필수 항목에 동의해주세요.</div>
           </div>
-          <div class="hidden-text2" id="provision-hidden2">필수 항목에 동의해주세요.</div>
           <div class="robot">
             <div class="robot-area">
               <input type="checkbox" id="robot-check"> 로봇이 아닙니다.
               <div style="margin-left: 82px;"><img src="/img/join/CAPTCHA.png"></div>
             </div>
+            <div class="hidden-text2" id="robot-hidden2">위 인증은 필수 사항입니다.</div>
           </div>
-          <div class="hidden-text2" id="robot-hidden2">필수 항목에 동의해주세요.</div>
           <div class="join-btn">
             <button id="join-btn">회원가입하기</button>
           </div>   
