@@ -18,10 +18,9 @@ $(function(){
   $('#email').on('click', function() {
     if ($(this).val() === '') {
       resetStyles('#email-hidden2', '#email', '#email-title');
-      $('#email-btn').css('pointer-events','none');
+      $('#email-required').css('border-color','#f67877');
     } else {
       onStyles('#email-hidden2', '#email', '#email-title');
-      $('#email-btn').css('pointer-events','auto');
       return true;      
     }
   });
@@ -32,13 +31,33 @@ $(function(){
       $('#email-btn').css('pointer-events','none');
     } else {
       onStyles('#email-hidden2', '#email', '#email-title');
-      $('#email-btn').css('pointer-events','auto');  
       return true;
     }
   });
 
+//  var selectBox = $(".email-menu");
+//  var selectedValue = selectBox.val();
 
+  var selectedValue = $(".email-menu option:selected").text();
 
+  $("select[name=menu]").change(function(){
+  console.log($(this).val()); //value값 가져오기
+  
+  if (selectedValue === null) {
+      $('#email-btn').css('pointer-events','none');
+      $('#email-required').css('border-color','#f67877');
+      console.log("required-1");
+    } else {
+      onStyles('#email-hidden2', '#email', '#email-title');
+      $('#email-required').css('border-color','#e6e6e6');
+      $('#email-btn').css('pointer-events','auto');
+      $('#email-btn').css('background','#46c5f0');
+      $('#email-btn').css('color','#fff');
+      console.log("required-2");
+      return true;      
+    }
+});
+  
 
 /* email-btn 클릭 함수 */
 function emailButtonClick() {
@@ -164,6 +183,8 @@ $('.checkbox-btn').on('click', function() {
     console.log('2');
     $('#all-check').prop('checked', false);
   }
+  
+  
 });
 
 
@@ -189,8 +210,41 @@ $('#join-btn').on('click', function() {
       alert("회원가입 성공");
       console.log("회원가입 성공");
     } else {
-      alert("회원가입 실패");
+      
+      if (!checkEmail()) {
+      resetStyles('#email-hidden2', '#email', '#email-title');
+      $('#email-required').css('border-color','#f67877');
+    } else if(checkEmail()){
+      onStyles('#email-hidden2', '#email', '#email-title');
+    }
+    if (!checkPassword()) {
+      resetStyles('#pw-hidden2', '#password', '#pw-title');
+    }else if(checkPassword()){
+      onStyles('#pw-hidden2', '#password', '#pw-title');
+    }
+    if (!checkPasswordMatch()) {
+      resetStyles('#pwCheck-hidden2', '#password-check', '#pw-check-title');
+    }else if(checkPasswordMatch()){
+      onStyles('#pwCheck-hidden2', '#password-check', '#pw-check-title');
+    }
+    if (!checkNickname()) {
+      resetStyles('#nickname-hidden2', '#nickname', '#nickname-title');
+    }else if(checkNickname()){
+      onStyles('#nickname-hidden2', '#nickname', '#nickname-title');
+    }
+    if (!checkAgreement()) {
+      resetStyles('#provision-hidden2', '.provision-box', '#provision-title');
+    }else if(checkAgreement()){
+      onStyles('#provision-hidden2', '.provision-box', '#provision-title');
+    }
+    if (!checkRobot()) {
+      resetStyles('#robot-hidden2', '.robot-area', '#robot-title');
+    }else if(checkRobot()){
+      onStyles('#robot-hidden2', '.robot-area', '#robot-title');
+    }
+      
       console.log('회원가입 실패');
+      
     }
   });
 
@@ -217,17 +271,50 @@ $('#join-btn').on('click', function() {
       $('#check-provision').is(':checked') &&
       $('#check-use').is(':checked')
     ){
+      console.log("agree");
+      onStyles('#provision-hidden2', '.provision-box', '#provision-title');
       return true;
     } else {
+      console.log("not agree");
       return false;
     }  
-
   }
+  
+  $('#check-age').on('click', function() {
+        if(checkAgreement()){
+          onStyles('#provision-hidden2', '.provision-box', '#provision-title');
+          console.log("robot-true!");
+        } 
+    });
+    
+  $('#check-provision').on('click', function() {
+      if(checkAgreement()){
+        onStyles('#provision-hidden2', '.provision-box', '#provision-title');
+        console.log("robot-true!");
+      } 
+  });
+  
+  $('#check-use').on('click', function() {
+        if(checkAgreement()){
+          onStyles('#provision-hidden2', '.provision-box', '#provision-title');
+          console.log("robot-true!");
+        } 
+    });
+  
 
   function checkRobot() {
     return $('#robot-check').is(':checked');
 
   }
+  
+  $('#robot-check').on('click', function() {
+        if(checkRobot()){
+          onStyles('#robot-hidden2', '.robot-area', '#robot-title');
+          console.log("robot-true!");
+        } else {
+          resetStyles('#robot-hidden2', '.robot-area', '#robot-title');
+        }
+    });
 
 
 

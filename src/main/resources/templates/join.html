@@ -24,7 +24,7 @@
             <div class="title" id="email-title">이메일</div>
             <div class="email-input">
               <input type="text" id="email" placeholder="  이메일"> @
-              <select class="email-menu" name="menu" required>
+              <select class="email-menu" id="email-required" name="menu" required>
                 <option value="" disabled selected>선택해주세요</option>
                 <option value="naver">naver.com</option>
                 <option value="hanmail">hanmail.net</option>
@@ -34,7 +34,7 @@
                 <option value="hotmail">hotmail.com</option>
                 <option value="outlook">outlook.com</option>
                 <option value="icloud">icloud.com</option>
-                <option value="other">직접입력</option>
+                <option value="other" >직접입력</option>
               </select>
             </div>
             <div class="hidden-text2" id="email-hidden2">필수 입력 항목입니다.</div>
@@ -63,7 +63,7 @@
             <div class="hidden-text2" id="nickname-hidden2">필수 입력 항목입니다.</div>
           </div>
           <div class="provision">
-            <div class="title">약관동의</div>
+            <div class="title" id="provision-title">약관동의</div>
             <div class="provision-box">
               <div>
                 <input type="checkbox" id="all-check"> 전체동의
@@ -92,12 +92,14 @@
               </div>
             </div>
           </div>
+          <div class="hidden-text2" id="provision-hidden2">필수 항목에 동의해주세요.</div>
           <div class="robot">
             <div class="robot-area">
               <input type="checkbox" id="robot-check"> 로봇이 아닙니다.
               <div style="margin-left: 82px;"><img src="/img/join/CAPTCHA.png"></div>
             </div>
           </div>
+          <div class="hidden-text2" id="robot-hidden2">필수 항목에 동의해주세요.</div>
           <div class="join-btn">
             <button id="join-btn">회원가입하기</button>
           </div>   
