@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+@font-face{
+  src: url("/font/appleSD/AppleSDGothicNeoL.ttf");
+  font-family: "AppleSD";
+}
+
+body {
+  font-family: "AppleSD";
+}
+
 .join-wrap {
   display: flex;
   justify-content: center;

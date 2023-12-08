@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/article.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/sticy-kit.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+  <div class="fixed-menu">
+    <div style="margin-top: 20px"><img src="/img/article/naver-favicon.png"></div>
+    <div><img src="/img/article/netflix-favicon.jpeg"></div>
+    <div style="width: 30px; height: 2px; border-bottom: 0.5px solid #efefef; margin-bottom: 8px;"></div>
+    <div id="adddiv"></div>
+    <div id="plus">+</div>
+  </div>
+  <div class="popup">
+    <div style="margin: 15px 10px; font-family: AppleSD-B;">사이트 추가</div>
+    <div style="font-size: 13px; font-family: AppleSD-B; margin-bottom: 5px;">사이트 이름 <span style="font-family: AppleSD; color:red">&nbsp;사이트 이름을 입력해주세요</span></div>
+    <div><input id="site-name" type="text" placeholder="사이트 이름을 입력하세요."></div>
+    <div style="font-size: 13px; font-family: AppleSD-B; font-weight: bold; margin-bottom: 5px;">사이트 주소 <span style="font-family: AppleSD; color:red">&nbsp;사이트 주소를 입력해주세요 (https://, http:// 포함하여 작성)</span></div>
+    <div><input type="text" placeholder="사이트 이름을 입력하세요."></div>
+    <div style="display: flex; justify-content: flex-end;">
+      <div><input class="popup-btn" id="site-cancel" type="button" value="취소"></div>
+      <div><input class="popup-btn" id="site-check" type="button" value="확인"></div>
+    </div>
+  </div>
+  <div class="page"> <!-- wrap -->
+    <header>
+      <div class="header-container">
+        <div class="header-menu">
+          <img id="logo-img" src="./img/logo.png">
+          <div id="top-menu">커뮤니티 쇼핑 이사/시공/생활</div>
+          <div class="top-btn">
+            <input style="height:30px;" type="text" placeholder="⌕ 통합검색">
+            <div><img src="./img/cart.png"></div>
+            로그인 | 회원가입
+            <button> 글쓰기 ⌵ </button>
+          </div>
+        </div>
+        <div class="header-menu2">
+          <div id="top-menu2">홈 추천 집들이 집사진 살림수납 콜렉터블 홈스토랑 핫플레이스 육아 플렌테리어 반려동물</div>          
+          <div class="top-btn2">
+            <div style="margin-left: 160px;">⌵</div>
+            <div class="rolling-rank">
+              <div class="rolling" id="rolling-1">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">1</div>
+                <div style="width:30px; margin-left: 10px; color:red">new</div>
+                <div style="width:100px; margin-left: 10px">모달이불세트</div>
+              </div>
+              <div class="rolling" id="rolling-2">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">2</div>
+                <div style="width:30px; margin-left: 10px; color:dodgerblue; text-align: center;">▾</div>
+                <div style="width:100px; margin-left: 10px">서랍장</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">3</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">크리스마스 트리</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">4</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">옷장</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">5</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">공기정화식물</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">6</div>
+                <div style="width:30px; margin-left: 10px; color:dodgerblue; text-align: center;">▾</div>
+                <div style="width:102px; margin-left: 10px">아이패드 거치대</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">7</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">new</div>
+                <div style="width:102px; margin-left: 10px">미니 화장대</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">8</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">반원 테이블</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">9</div>
+                <div style="width:30px; margin-left: 10px; color:dodgerblue; text-align: center;">▾</div>
+                <div style="width:102px; margin-left: 10px">경추베개</div>
+              </div>
+              <div class="rolling" id="rolling-3">
+                <div style="width:10px; margin-left: 15px; font-weight: 700;">10</div>
+                <div style="width:30px; margin-left: 10px; color:red; text-align: center;">▴</div>
+                <div style="width:102px; margin-left: 10px">무드등</div>
+              </div>
+            </div>
+            <div id="mouseover">⌵</div>
+          </div>
+          <div class="mouseover-front">
+            <div>
+              <div style="font-weight: bold; font-size: 18px;">인기검색어</div>
+              <div style="display:flex">1 <div class="search-point" style="color: red">new</div> 모달이불세트<br></div>
+              <div style="display:flex">2 <div class="search-point" style="color: dodgerblue">▾</div> 서랍장<br></div>
+              <div style="display:flex">3 <div class="search-point" style="color: red">▴</div> 크리스마스 트리<br></div>
+              <div style="display:flex">4 <div class="search-point" style="color: red">▴</div> 옷장<br></div>
+              <div style="display:flex">5 <div class="search-point" style="color: red">▴</div> 공기정화식물<br></div>
+              <div style="display:flex">6 <div class="search-point" style="color: dodgerblue">▾</div> 아이패드 거치대<br></div>
+              <div style="display:flex">7 <div class="search-point" style="color: red">new</div> 미니 화장대<br></div>
+              <div style="display:flex">8 <div class="search-point" style="color: red">▴</div> 반원 테이블<br></div>
+              <div style="display:flex">9 <div class="search-point" style="color: dodgerblue">▾</div> 경추베개<br></div>
+              <div style="display:flex">8 <div class="search-point" style="color: red">▴</div> 무드등<br></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="wrap">
+      <div class="container">
+        <div class="title-area">
+            <div><img src="/img/article/news-logo.png"></div>
+            <div style="font-size: 30px; margin: 12px auto; font-family: AppleSD-B;">또 의대증원 신경전... "정부가 신뢰 짓밟아" vs "집단행동 안돼"</div>
+            <div>연합뉴스 원문 | 김병규 | 입력 2023.11.29 17:36  최종수정 2023.11.29 18:07 </div>
+            <div style="display: flex;">
+              <div style="width: 50%; display: flex; align-items: center; padding-top: 7px;"><img src="/img/article/sns-img1.png"></div>
+              <div style="width: 50%; display: flex; justify-content: end;"><img src="/img/article/sns-img2.png"></div>
+            </div>
+            <hr>
+        </div>
+        <section class="contents">
+          <article class="content">
+            <div>
+              정부-의협, 19차 의료현안협의체…의협 강경자세 표명 후 첫 회의<br/>
+              <br/>
+              의협, 정부 수요조사 결과 비판에 복지부 "과학적 근거 달라" 역공<br/>
+              <br/>
+              "불편하시면 협상 말까요", "오늘은 저희가 나가는 걸로" 날선 농담도<br/>
+              <br/>
+            </div>
+            <div class="article-img"><img src="/img/article/article_img_01.jpeg"></div>
+            <div>
+              (서울=연합뉴스) 김병규 권지현 기자 = 정부와 대한의사협회(의협)가 의과대학 입학 정원 문제를 논의하기 위해 다시 마주 앉은 자리에서 날 선 공방이 펼쳐졌다.<br/>
+
+              보건복지부와 의협은 29일 오후 서울 중구 콘퍼런스하우스 달개비에서 제19차 의료현안협의체 회의를 열었다.<br/>
+              <br/>
+              지난 26일 의협이 총파업을 언급하며 강경투쟁 자세를 보인 뒤 처음 협상 테이블에 앉았다.<br/>
+              <br/>
+
+              의협은 취재진에 공개된 모두발언에서 파업 등 집단행동 가능성을 언급하지 않은 채 정부의 대학 수요조사(증원 역량 조사) 결과가 무의미하다고 비판했다.<br/>
+              <br/>
+              양동호 의협 협상단장은 "열악한 교육 여건으로 현재도 학생들과 교수들이 불안한 환경에서 의학 교육을 이어가고 있는 상황에서 현재 인원의 3∼4배를 뻥튀기해 발표하는 수요조사는 공정하고 객관적이지 않다"며 "정부가 부적절한 수요조사 결과를 무리하게 발표해 의료계와 대한민국이 혼란에 빠졌다"고 주장했다.<br/>
+              <br/>
+              양 단장은 '뻥튀기 발표'의 예로 을지대학 등을 언급하기도 했다. 그는 "정원이 40명인 을지대학교는 현재보다 3배가 많은 120명을 요구하고, 정원이 110명인 충남대학교는 410명을 요구했다"고 지적했다.<br/>
+              <br/>
+              그는 "많은 의사들은 정부가 의정 합의를 파기하고 의료계의 신뢰를 무참히 짓밟았다고 울분을 토하고 있다"며 "의대증원을 말하기 전에 의사들이 필수·지역 의료로 유입될 수 있는 구체적인 대책과 로드맵을 먼저 세워야 한다"고 말했다.<br/>
+            </div>
+            <div class="article-img"><img src="/img/article/article_img_02.jpeg"></div>
+            <div>
+              이에 대해 정부 측은 지난 회의 때 의협 협상단이 자리를 뜨며 파행했던 것과 집단행동을 언급했던 것을 비판하면서 "과학적인 근거에 기반해 의견을 제시하라"고 촉구했다.<br/>
+              <br/>
+              그동안 의협이 정부의 근거를 비과학적이라고 지적했는데, 의협의 주장이 과학적이지 못하다고 역공을 편 것이다.<br/>
+              <br/>
+              정경실 복지부 보건의료정책관은 "지난주 회의 때 의협의 퇴장으로 논의가 제대로 이뤄지지 못한 점에 대해 유감을 표한다"며 "정부나 의료단체나 최우선의 판단 기준은 국민의 생명과 건강 수호다. 어떤 상황에서도 국민의 건강과 생명을 담보로 한 집단행동은 정당화될 수 없다"고 강조했다.<br/>
+              <br/>
+              이어 "정부의 노력에 대해 과학적이지 않다는 말만 되풀이할 것이 아니라, 과학적 근거에 기반한 의견을 제시해 달라"며 "의료계에서 근거가 불분명한 주장이 사실처럼 반복 재생되고 있는 점에 대해 우려를 표한다"고 밝혔다.<br/>
+            </div>
+            <div class="article-img"><img src="/img/article/article_img_03.jpeg"></div>
+            <div>
+              정 정책관은 그동안 의협이 의사 증원이 필요하지 않다며 내세운 근거들을 하나씩 들며 반박하기도 했다.<br/>
+              <br/>
+							그는 '한국이 국토 면적당 의사 수가 많아서 의료 접근성이 높다'는 의료계의 주장에 대해 "의료 수요는 국토 면적에서 나오지 않는다. 인구 1천명당 의사수는 OECD 최하위 수준이다"고 지적했다.<br/>
+              <br/>
+							'한국의 의사 수 증가율이 OECD보다 높다'는 논리와 관련해서는 "모수인 의사 수 자체가 적어서 나타나는 착시 현상"이라고 일축했다.<br/>
+              <br/>
+							'의사가 늘면 의료비가 증가해 건강보험 재정이 악화될 것'이라는 주장에 대해서는 "의사가 부족한 지역에서 의사 수가 늘어 의료 접근성이 높아진다면 정부가 마땅히 지출해야 할 비용"이라며 "의사들이 수익을 위해 과잉 진료를 할 수 있다는 주장은 의사 개인의 직업윤리의 문제이지, 의사 증원으로 인해 나타나는 문제는 아니다"고 강조했다.<br/>
+              <br/>
+							양측은 이날 회의 시작 전부터 상대방을 날카롭게 비판하며 신경전을 벌이기도 했다.<br/>
+              <br/>
+							의협의 양 단장이 "한번 더 정부를 믿어보자 해서 이 자리에 나오게 됐다"고 말하자 복지부의 정 정책관은 "한편으로는 투쟁을 말씀하시고 한편으로는 협상하신다 그러고…"라며 비판했다.<br/>
+              <br/>
+							이에 의협이 "불편하시면 협상하지 말까요"(서정성 총무이사). "(정부야말로) 한편으로는 협상하신다고 하고 한편으로는 의대 수요조사 하고…" 등의 발언으로 정부 측을 비꼬자, 복지부 측은 "그럼 오늘은 저희가 나가는 것으로 (할까요)"라며 날 선 농담을 던졌다.<br/>
+            </div>
+            <div class="article-img"><img src="/img/article/article_img_04.jpeg"></div>
+            
+          </article>
+          <aside class="aside-content">
+            <div style="text-align: center; margin-top: 50px"><img src="/img/article/aside-img.png"></div>
+            <div class="inaside">
+              <div class="aside-title"><span style="color: blue;">연합뉴스</span> 랭킹뉴스</div>
+              <div class="aside-ranking">
+                <div><span class="num-blue">&nbsp;1 </span>방통위, 을지학원 연합뉴스TV 최대주주 변경신청 '불승인'</div>
+                <div><span class="num-blue">&nbsp;2 </span>송은범 "더 던지고 싶고 잘 던질 수 있다…열심히 개인 훈···</div>
+                <div><span class="num-blue">&nbsp;3 </span>홈플러스 "금겹살에 냉삼 불티…냉동돈육 매출 150%↑"</div>
+                <div><span class="num-blue">&nbsp;4 </span>코너킥·프리킥에도 VAR?…국제축구평의회, 적용 범위 확···</div>
+                <div><span class="num-blue">&nbsp;5 </span>긴장 고조되는 한반도…北 GP 복원, 軍 '상응조치' 공언</div>
+                <div><span class="num-blue">&nbsp;6 </span>野 "김여사 명품백 수수 보도 해명해야"…함정취재·몰카···</div>
+                <div><span class="num-blue">&nbsp;7 </span>"1년간 인질로 잡혀있을 줄"…9살 딸 한마디에 아빠 마음···</div>
+                <div><span class="num-blue">&nbsp;8 </span>해경, 가거도 해상서 침몰한 중국화물선 선주에 선체수습···</div>
+                <div><span class="num-blue">&nbsp;9 </span>4년 전 불탄 파리 노트르담 대성당 첨탑 윤곽 드러나</div>
+                <div><span class="num-blue">10 </span>또 의대증원 신경전…"정부가 신뢰 짓밟아" vs "집단행동···</div>
+              </div>
+              <div style="text-align: center; margin: 34px 0px;">
+                <img style="width: 350px; height: 200px" src="/img/article/aside-img2.png">
+              </div>
+              <div style="font-weight: bold; padding: 2px 0px 15px 10px; font-family: AppleSD-B; font-size: 20px;">관련 뉴스</div>
+              <div style="margin: 0px 14px 13px; color: blue; font-family: AppleSD-B;"> 이 기사를 본 사람들이 선택한 뉴스 </div>
+              <div class="choose-news">
+                <div class="ch">
+                  <div class="ch-text">의총 미룬 민주당···선거제 논쟁 계파전<br>비화 양상[정다운의 뉴스톡]</div>
+                  <div class="ch-img"><img src="img/article/ch-img1.png"></div>
+                </div>
+                <div class="ch">
+                  <div class="ch-text">"정원의 4배 늘려 달라는 수요조사가 어<br>디 있냐" vs "생명 담보로 한 집단행동···"</div>
+                  <div class="ch-img"><img src="img/article/ch-img2.png"></div>
+                </div>
+                <div class="ch">
+                  <div class="ch-text">공무원 회계망도 장애···행정망장비 고<br>장 원인은 여전히 미궁</div>
+                  <div class="ch-img"><img src="img/article/ch-img3.png"></div>
+                </div>
+                <div class="ch">
+                  <div class="ch-text">재계 "졌지만 잘 싸웠다"...한국 브랜드가<br>치 높인 기업인들에게 박수를</div>
+                  <div class="ch-img"><img src="img/article/ch-img4.png"></div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="footer-container">
+        <div class="footer-area">
+          <div class="footer1">
+            <div>고객센터 ></div>
+            <div>
+              <span>1670-0876</span>&nbsp;<span>09:00~18:00</span>
+            </div>
+            <div>
+              평일: 전체 문의 상담 가능 <br>
+              주말, 공휴일: 오늘의집 직접배송, 이사/시공/제품설치 <br>
+              문의 상담 가능
+            </div>
+            <span style="border: 0.5px solid rgb(221, 224, 227); border-radius: 10%;">카톡 상담(평일 09:00~18:00)</span>
+            <br><br>
+            <span style="border: 0.5px solid rgb(221, 224, 227); border-radius: 10%;">이메일 문의</span>
+          </div>
+          <div class="footer2">
+            <div style="margin-right: 40px;">
+              회사소개<br>
+              채용정보<br>
+              이용약관<br>
+              개인정보 처리방침<br>
+              안전거래센터
+            </div>
+            <div>
+              입점신청<br>
+              제휴/광고 문의<br>
+              사업자 구매 회원<br>
+              시공 파트너 안내<br>
+              상품광고 소개<br>
+              고객의 소리
+            </div>
+          </div>
+          <div class="footer3">
+            <div>
+              (주)버킷플레이스 | 대표이사 이승재<br>
+              서울 서초구 서초대로74길 4 삼성생명서초타어 25층, 27층 | contact@bucketplace.net<br>
+              사업자등록번호 119-86-91245 사업자정보확인<br>
+              통신판매업신고번호 제2018-서울서초-0580<br><br>
+              고객님이 현금결제한 금액에 대해 우리은행과 채무자급보증 계약을 체결하여 안전거래를 보장하고 있습니다.<br>
+              서비스 가입사실확인
+            </div>
+            <div class="footer-img">
+              <div style="display: flex; align-items: center; width: 50%; border: 0.5px solid rgb(221, 224, 227);">
+                <img src="./img/logo1.png">
+                <div>
+                  오늘의집 서비스 운영<br>
+                  2021. 09. 08 ~ 2023. 09. 07
+                </div>
+              </div>
+              <div style="display: flex; justify-content: center; align-items: center; width: 40%; border: 0.5px solid rgb(221, 224, 227);"><img src="./img/logo2.png"></div>
+              <div style="display: flex; justify-content: center; align-items: center; width: 40%; border: 0.5px solid rgb(221, 224, 227);"><img src="./img/logo3.png"></div>
+            </div>
+            <div></div>
+            <div>
+              (주)버킷플레이스는 통신판매중개자로 거래 당사자가 아니므로, 판매자가 등록한 상품정보 및 거래 등에 대해<br>
+               책임을 지지 않습니다. 단, (주)버킷플레스가 판매자로 등록 판매한 상품은 판매자로서 책임을 부담합니다. 
+              <img src="./img/snsimg.png"><br>
+              Copyright 2014. bucketplace, Co., Ltd. All reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script type="text/javascript" src="/js/article.js"></script>
+</body>
+</html>
