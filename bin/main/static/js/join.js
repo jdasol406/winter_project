@@ -15,6 +15,11 @@ function onStyles(hiddenElementSelector, targetElementSelector, titleElementSele
 
 /* 이메일 함수 */
 $(function(){
+  var selectedValue = $(".email-menu option:selected").text();
+
+  $("select[name=menu]").change(function(){
+  console.log($(this).val()); //value값 가져오기
+  
   $('#email').on('click', function() {
     if ($(this).val() === '') {
       resetStyles('#email-hidden2', '#email', '#email-title');
@@ -31,6 +36,12 @@ $(function(){
       $('#email-btn').css('pointer-events','none');
     } else {
       onStyles('#email-hidden2', '#email', '#email-title');
+      if(selectedValue !== null){
+        $('#email-btn').css('pointer-events','auto');
+        $('#email-btn').css('background','#46c5f0');
+        $('#email-btn').css('color','#fff');
+        $('#email-required').css('border-color','#e6e6e6');
+      }
       return true;
     }
   });
@@ -38,10 +49,6 @@ $(function(){
 //  var selectBox = $(".email-menu");
 //  var selectedValue = selectBox.val();
 
-  var selectedValue = $(".email-menu option:selected").text();
-
-  $("select[name=menu]").change(function(){
-  console.log($(this).val()); //value값 가져오기
   
   if (selectedValue === null) {
       $('#email-btn').css('pointer-events','none');
@@ -50,14 +57,16 @@ $(function(){
     } else {
       onStyles('#email-hidden2', '#email', '#email-title');
       $('#email-required').css('border-color','#e6e6e6');
-      $('#email-btn').css('pointer-events','auto');
-      $('#email-btn').css('background','#46c5f0');
-      $('#email-btn').css('color','#fff');
+      if ($('#email').val() !== '') {
+        $('#email-btn').css('pointer-events','auto');
+        $('#email-btn').css('background','#46c5f0');
+        $('#email-btn').css('color','#fff');
+      }
       console.log("required-2");
       return true;      
     }
 });
-  
+
 
 /* email-btn 클릭 함수 */
 function emailButtonClick() {
@@ -129,6 +138,15 @@ $('#email-btn').click(emailButtonClick);
 
 
   // 유효성 검사
+  $('#password').on('input', function() {
+    if ($('#password').val() !== $('#password-check').val()) {
+      resetStyles('#pwCheck-hidden', '#password-check', '#pw-check-title');
+    } else {
+      onStyles('#pwCheck-hidden', '#password-check', '#pw-check-title'); 
+      return true;
+    }
+  });
+  
   $('#password-check').on('input', function() {
     if ($('#password').val() !== $('#password-check').val()) {
       resetStyles('#pwCheck-hidden', '#password-check', '#pw-check-title');

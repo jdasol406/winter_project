@@ -27,5 +27,13 @@ public class MainController {
     
     return "join";
   }
+  
+  @GetMapping("/article")
+  public String article() throws Exception {
+    
+    String article = mapper.select();
+    
+    return "article";
+  }
 
 }
