@@ -88,3 +88,58 @@ $('#site-check').on('click', function() {
 });
 
 
+//$(document).on('contextmenu', '#daum', function(e) {
+//  $('#daum').attr('src', '/img/article/x-icon.png');
+//  $('#daum').attr('id', 'imgx'); 
+//  
+//  $('#imgx').on('click',function(){
+//    console.log("x");
+//    $('#imgx').remove();
+//  });
+//});
+//
+//$(document).on('contextmenu', '#apple', function(e) {
+//  $('#apple').attr('src', '/img/article/x-icon.png');
+//  $('#apple').attr('id', 'imgx'); 
+//  
+//  $('#imgx').on('click',function(){
+//    console.log("x");
+//    $('#imgx').remove();
+//  });
+//});
+//
+//$(document).on('contextmenu', '#papago', function(e) {
+//  $('#papago').attr('src', '/img/article/x-icon.png');
+//  $('#papago').attr('id', 'imgx'); 
+//  
+//  $('#imgx').on('click',function(){
+//    console.log("x");
+//    $('#imgx').remove();
+//  });
+//});
+
+function ximg(e){
+  $(e).attr('src', '/img/article/x-icon.png');
+  $(e).attr('id', 'imgx'); 
+  
+  $('#imgx').on('click',function(){
+    console.log("x");
+    $('#imgx').remove();
+  });
+}
+
+$(document).on('contextmenu', '#daum', function() {
+  ximg(this);
+});
+
+$(document).on('contextmenu', '#apple', function() {
+  ximg(this);
+});
+
+$(document).on('contextmenu', '#papago', function() {
+  ximg(this);
+});
+
+// x이미지를 다시 원래대로...?
+
+
