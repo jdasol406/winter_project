@@ -31,9 +31,7 @@ $('#site-cancel').on('click',function(){
 }); 
 
 
-// 스크립트로 html만들고 마지막요소에 붙이는 함수
-$('#site-check').on('click', function() {
-  
+function siteCheckHandler() {
   var inputValue = $('#site-name').val();
   
   console.log("test : "+inputValue);
@@ -59,8 +57,8 @@ $('#site-check').on('click', function() {
       if($('#apple').length === 0){
         var imageElement = $('<img>', {
           id: 'apple',
-          src: '/img/article/apple-favicon.jpeg',
-          style: 'width: 22px; border-radius: 5px; margin: 8px auto'
+          src: '/img/article/apple-favicon.png',
+          style: 'width: 20px; height: 20px; border-radius: 5px; margin: 8px auto'
         });
         const dynamicDiv = $('<div>').append(imageElement);
   
@@ -85,38 +83,15 @@ $('#site-check').on('click', function() {
       }
    }
    
-});
+}
 
+//아직 이미지 변경하면서 하나 더 생기는 오류 못고침
+$('#site-check').on('click', siteCheckHandler);
 
-//$(document).on('contextmenu', '#daum', function(e) {
-//  $('#daum').attr('src', '/img/article/x-icon.png');
-//  $('#daum').attr('id', 'imgx'); 
-//  
-//  $('#imgx').on('click',function(){
-//    console.log("x");
-//    $('#imgx').remove();
-//  });
-//});
-//
-//$(document).on('contextmenu', '#apple', function(e) {
-//  $('#apple').attr('src', '/img/article/x-icon.png');
-//  $('#apple').attr('id', 'imgx'); 
-//  
-//  $('#imgx').on('click',function(){
-//    console.log("x");
-//    $('#imgx').remove();
-//  });
-//});
-//
-//$(document).on('contextmenu', '#papago', function(e) {
-//  $('#papago').attr('src', '/img/article/x-icon.png');
-//  $('#papago').attr('id', 'imgx'); 
-//  
-//  $('#imgx').on('click',function(){
-//    console.log("x");
-//    $('#imgx').remove();
-//  });
-//});
+function replaceImage(id, src) {
+  $('#' + id).attr('src', src);
+}
+
 
 function ximg(e){
   $(e).attr('src', '/img/article/x-icon.png');
@@ -128,18 +103,48 @@ function ximg(e){
   });
 }
 
+function imgback(element) {
+  $('#imgx').attr('src', '/img/article/'+element+'-favicon.png');
+  $('#imgx').attr('id', element);
+  console.log("imgback: "+element);
+}
+
 $(document).on('contextmenu', '#daum', function() {
   ximg(this);
+
+  $('.popup').css('display','block');
+  $('#site-check').val('업데이트');
+  $('#site-check').attr('id', 'update-btn');
+  
+  $(document).on('click', function() {
+    imgback('daum');
+  });
+  
+  $('#site-check').off('click', siteCheckHandler);
+  
+  $('#update-btn').on('click', function() {
+    var newText = $('.popup input').val();
+    replaceImage('daum', '/img/article/' + newText + '-favicon.png');
+  });
 });
 
 $(document).on('contextmenu', '#apple', function() {
   ximg(this);
+  $('.popup').css('display','block');
+  
+  $(document).on('click', function() {
+    imgback('apple');
+  });
 });
 
 $(document).on('contextmenu', '#papago', function() {
   ximg(this);
+  $('.popup').css('display','block');
+  
+  $(document).on('click', function() {
+    imgback('papago');
+  });
 });
 
-// x이미지를 다시 원래대로...?
 
 
