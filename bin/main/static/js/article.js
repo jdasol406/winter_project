@@ -28,6 +28,12 @@ $('#plus').on('click',function(){
 
 $('#site-cancel').on('click',function(){
   $('.popup').css('display','none');
+  $('.popup input[type="text"]').val('');
+}); 
+
+$('#site-cancel2').on('click',function(){
+  $('.popup2').css('display','none');
+  $('.popup2 input[type="text"]').val('');
 }); 
 
 
@@ -82,16 +88,16 @@ function siteCheckHandler() {
         alert('이미 존재하는 항목입니다.');
       }
    }
-   
+   $('.popup').css('display','none');
+   $('.popup input[type="text"]').val('');
 }
 
 //아직 이미지 변경하면서 하나 더 생기는 오류 못고침
 $('#site-check').on('click', siteCheckHandler);
 
-function replaceImage(id, src) {
-  $('#' + id).attr('src', src);
+function replaceImage(id, src, newId) {
+  $('#' + id).attr('src', src).attr('id', newId);
 }
-
 
 function ximg(e){
   $(e).attr('src', '/img/article/x-icon.png');
@@ -112,39 +118,56 @@ function imgback(element) {
 $(document).on('contextmenu', '#daum', function() {
   ximg(this);
 
-  $('.popup').css('display','block');
-  $('#site-check').val('업데이트');
-  $('#site-check').attr('id', 'update-btn');
+  $('.popup2').css('display','block');
   
   $(document).on('click', function() {
     imgback('daum');
   });
   
-  $('#site-check').off('click', siteCheckHandler);
-  
   $('#update-btn').on('click', function() {
-    var newText = $('.popup input').val();
-    replaceImage('daum', '/img/article/' + newText + '-favicon.png');
+    var newText = $('.popup2 input').val();
+    console.log(newText);
+    replaceImage('daum', '/img/article/' + newText + '-favicon.png',newText);
+    $('.popup2').css('display','none');
+    $('.popup2 input[type="text"]').val('');
   });
 });
 
 $(document).on('contextmenu', '#apple', function() {
   ximg(this);
-  $('.popup').css('display','block');
+
+  $('.popup2').css('display','block');
   
+
   $(document).on('click', function() {
     imgback('apple');
+  });
+  
+  $('#update-btn').on('click', function() {
+    var newText = $('.popup2 input').val();
+    console.log(newText);
+    replaceImage('apple', '/img/article/' + newText + '-favicon.png',newText);
+    $('.popup2').css('display','none');
+    $('.popup2 input[type="text"]').val('');
   });
 });
 
 $(document).on('contextmenu', '#papago', function() {
   ximg(this);
-  $('.popup').css('display','block');
+
+  $('.popup2').css('display','block');
   
   $(document).on('click', function() {
     imgback('papago');
   });
+  
+  $('#update-btn').on('click', function() {
+    var newText = $('.popup2 input').val();
+    console.log(newText);
+    replaceImage('papago', '/img/article/' + newText + '-favicon.png',newText);
+    $('.popup2').css('display','none');
+    $('.popup2 input[type="text"]').val('');
+  });
 });
-
 
 

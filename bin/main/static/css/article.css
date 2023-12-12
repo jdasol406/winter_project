@@ -364,4 +364,38 @@ nav {
   margin-right: 10px;
 }
 
+.popup2 {
+  width: 450px;
+  height: 250px;
+  background-color: #fff;
+  z-index: 10000;
+  position: absolute;
+  right: 43%;
+  top: 10%;
+  border: 1px solid #505060;
+  border-radius: 5px;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,.1);
+  display: none;
+}
+
+.popup2 > div > input {
+  width: 422px;
+  height: 30px;
+  margin-bottom: 15px;
+}
+
+.popup2 > div {
+  margin-left: 10px;
+  
+}
+
+.popup2-btn:nth-child(1) {
+  margin-right: 10px
+}
+
+.popup2-btn:nth-child(2) {
+  margin-right: 10px;
+}
+
+
 
