@@ -31,11 +31,6 @@ $('#site-cancel').on('click',function(){
   $('.popup input[type="text"]').val('');
 }); 
 
-$('#site-cancel2').on('click',function(){
-  $('.popup2').css('display','none');
-  $('.popup2 input[type="text"]').val('');
-}); 
-
 
 function siteCheckHandler() {
   var inputValue = $('#site-name').val();
@@ -53,7 +48,7 @@ function siteCheckHandler() {
         });
         const dynamicDiv = $('<div>').append(imageElement);
   
-        $('#adddiv').append(dynamicDiv);
+        $('#adddiv').prepend(dynamicDiv);
       } else {
         alert('이미 존재하는 항목입니다.');
       }
@@ -68,7 +63,7 @@ function siteCheckHandler() {
         });
         const dynamicDiv = $('<div>').append(imageElement);
   
-        $('#adddiv').append(dynamicDiv);
+        $('#adddiv').prepend(dynamicDiv);
       } else {
         alert('이미 존재하는 항목입니다.');
       }
@@ -83,7 +78,7 @@ function siteCheckHandler() {
         });
         const dynamicDiv = $('<div>').append(imageElement);
   
-        $('#adddiv').append(dynamicDiv);
+        $('#adddiv').prepend(dynamicDiv);
       } else {
         alert('이미 존재하는 항목입니다.');
       }
@@ -95,8 +90,12 @@ function siteCheckHandler() {
 //아직 이미지 변경하면서 하나 더 생기는 오류 못고침
 $('#site-check').on('click', siteCheckHandler);
 
-function replaceImage(id, src, newId) {
-  $('#' + id).attr('src', src).attr('id', newId);
+function replaceImage(src, newId) {
+  $('#imgx').attr('src', src).attr('id', newId);
+}
+
+function imgback(src, newId) {
+  $('#imgx').attr('src', src).attr('id', newId);
 }
 
 function ximg(e){
@@ -106,67 +105,78 @@ function ximg(e){
   $('#imgx').on('click',function(){
     console.log("x");
     $('#imgx').remove();
+    $('.popup').css('display','none');
   });
-}
-
-function imgback(element) {
-  $('#imgx').attr('src', '/img/article/'+element+'-favicon.png');
-  $('#imgx').attr('id', element);
-  console.log("imgback: "+element);
 }
 
 $(document).on('contextmenu', '#daum', function() {
   ximg(this);
 
-  $('.popup2').css('display','block');
+  $('.popup').css('display','block');
   
-  $(document).on('click', function() {
-    imgback('daum');
+  $('#site-cancel').on('click', function() {
+    console.log('site-check: daum');
+    imgback('/img/article/'+ 'daum' + '-favicon.png','daum');
+//    $('#imgx').attr('src', '/img/article/daum-favicon.png');
+//    $('#imgx').attr('id', 'daum');
   });
   
-  $('#update-btn').on('click', function() {
-    var newText = $('.popup2 input').val();
-    console.log(newText);
-    replaceImage('daum', '/img/article/' + newText + '-favicon.png',newText);
-    $('.popup2').css('display','none');
-    $('.popup2 input[type="text"]').val('');
+  $('#site-update').on('click', function() {
+    var newText = $('.popup input').val();
+    
+     if($('#'+newText).length !== 0) {
+        alert('이미 존재하는 항목입니다.');
+      }
+      
+    replaceImage('/img/article/' + newText + '-favicon.png',newText);
+    $('.popup').css('display','none');
+    $('.popup input[type="text"]').val('');
   });
 });
 
 $(document).on('contextmenu', '#apple', function() {
   ximg(this);
 
-  $('.popup2').css('display','block');
+  $('.popup').css('display','block');
   
 
-  $(document).on('click', function() {
-    imgback('apple');
+  $('#site-cancel').on('click', function() {
+    console.log('site-check: daum');
+    imgback('/img/article/'+ 'apple' + '-favicon.png','apple');
   });
   
-  $('#update-btn').on('click', function() {
-    var newText = $('.popup2 input').val();
-    console.log(newText);
-    replaceImage('apple', '/img/article/' + newText + '-favicon.png',newText);
-    $('.popup2').css('display','none');
-    $('.popup2 input[type="text"]').val('');
+  $('#site-update').on('click', function() {
+    var newText = $('.popup input').val();
+    
+    if($('#'+newText).length !== 0) {
+        alert('이미 존재하는 항목입니다.');
+      }
+    replaceImage('/img/article/' + newText + '-favicon.png',newText);
+    $('.popup').css('display','none');
+    $('.popup input[type="text"]').val('');
   });
 });
 
 $(document).on('contextmenu', '#papago', function() {
   ximg(this);
 
-  $('.popup2').css('display','block');
+  $('.popup').css('display','block');
   
-  $(document).on('click', function() {
-    imgback('papago');
+  $('#site-cancel').on('click', function() {
+    console.log('site-check: daum');
+    imgback('/img/article/'+ 'papago' + '-favicon.png','papago');
   });
   
-  $('#update-btn').on('click', function() {
-    var newText = $('.popup2 input').val();
-    console.log(newText);
-    replaceImage('papago', '/img/article/' + newText + '-favicon.png',newText);
-    $('.popup2').css('display','none');
-    $('.popup2 input[type="text"]').val('');
+  $('#site-update').on('click', function() {
+    var newText = $('.popup input').val();
+
+    if($('#'+newText).length !== 0) {
+        alert('이미 존재하는 항목입니다.');
+    }
+
+    replaceImage('/img/article/' + newText + '-favicon.png',newText);
+    $('.popup').css('display','none');
+    $('.popup input[type="text"]').val('');
   });
 });
 
