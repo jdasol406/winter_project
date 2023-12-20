@@ -22,6 +22,7 @@ $('.rolling-rank').mouseout (function() {
 /* container */
 
 $('#plus').on('click',function(){
+  $('.popup').find('#site-check').show();
   $('.popup').css('display','block');
 }); 
 
@@ -91,90 +92,102 @@ function siteCheckHandler() {
 $('#site-check').on('click', siteCheckHandler);
 
 function replaceImage(src, newId) {
-  $('#imgx').attr('src', src).attr('id', newId);
+  $('.imgx').attr('src', src).attr('id', newId);
+  $('.imgx').removeClass('imgx');
 }
 
 function imgback(src, newId) {
-  $('#imgx').attr('src', src).attr('id', newId);
+  $('.imgx').attr('src', src).attr('id', newId);
+  $('.imgx').removeClass('imgx');
 }
 
 function ximg(e){
   $(e).attr('src', '/img/article/x-icon.png');
-  $(e).attr('id', 'imgx'); 
+  $(e).addClass('imgx'); 
   
-  $('#imgx').on('click',function(){
+  $('.imgx').on('click',function(){
     console.log("x");
-    $('#imgx').remove();
+    $('.imgx').remove();
     $('.popup').css('display','none');
   });
 }
 
 $(document).on('contextmenu', '#daum', function() {
+  var elementId = event.target.id;
   ximg(this);
 
+  $('.popup').find('#site-check').hide();
   $('.popup').css('display','block');
   
   $('#site-cancel').on('click', function() {
-    console.log('site-check: daum');
-    imgback('/img/article/'+ 'daum' + '-favicon.png','daum');
-//    $('#imgx').attr('src', '/img/article/daum-favicon.png');
-//    $('#imgx').attr('id', 'daum');
+    console.log("우클릭: "+elementId);
+    imgback('/img/article/'+ elementId + '-favicon.png', elementId);
   });
   
   $('#site-update').on('click', function() {
     var newText = $('.popup input').val();
     
-     if($('#'+newText).length !== 0) {
+     if($('#'+newText).length === 0) {
+      replaceImage('/img/article/' + newText + '-favicon.png',newText);
+      } else {
         alert('이미 존재하는 항목입니다.');
+        imgback('/img/article/'+ 'daum' + '-favicon.png','daum');
       }
       
-    replaceImage('/img/article/' + newText + '-favicon.png',newText);
     $('.popup').css('display','none');
     $('.popup input[type="text"]').val('');
   });
 });
 
 $(document).on('contextmenu', '#apple', function() {
+  var elementId = event.target.id;
   ximg(this);
 
+  $('.popup').find('#site-check').hide();
   $('.popup').css('display','block');
   
 
   $('#site-cancel').on('click', function() {
-    console.log('site-check: daum');
-    imgback('/img/article/'+ 'apple' + '-favicon.png','apple');
+    console.log("우클릭: "+elementId);
+    imgback('/img/article/'+ elementId + '-favicon.png', elementId);
   });
   
   $('#site-update').on('click', function() {
     var newText = $('.popup input').val();
     
-    if($('#'+newText).length !== 0) {
-        alert('이미 존재하는 항목입니다.');
-      }
-    replaceImage('/img/article/' + newText + '-favicon.png',newText);
+    if($('#'+newText).length === 0) {
+      replaceImage('/img/article/' + newText + '-favicon.png',newText);
+    } else {
+      alert('이미 존재하는 항목입니다.');
+      imgback('/img/article/'+ 'apple' + '-favicon.png','apple');
+    }
     $('.popup').css('display','none');
     $('.popup input[type="text"]').val('');
   });
 });
 
 $(document).on('contextmenu', '#papago', function() {
+  var elementId = event.target.id;
+  
   ximg(this);
-
+  
+  $('.popup').find('#site-check').hide();
   $('.popup').css('display','block');
   
   $('#site-cancel').on('click', function() {
-    console.log('site-check: daum');
-    imgback('/img/article/'+ 'papago' + '-favicon.png','papago');
+    console.log("우클릭: "+elementId);
+    imgback('/img/article/'+ elementId + '-favicon.png', elementId);
   });
   
   $('#site-update').on('click', function() {
     var newText = $('.popup input').val();
 
-    if($('#'+newText).length !== 0) {
-        alert('이미 존재하는 항목입니다.');
+    if($('#'+newText).length === 0) {
+      replaceImage('/img/article/' + newText + '-favicon.png',newText);
+    } else {
+      alert('이미 존재하는 항목입니다.');
+      imgback('/img/article/'+ 'papago' + '-favicon.png','papago');
     }
-
-    replaceImage('/img/article/' + newText + '-favicon.png',newText);
     $('.popup').css('display','none');
     $('.popup input[type="text"]').val('');
   });
