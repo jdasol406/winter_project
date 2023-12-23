@@ -36,11 +36,8 @@ $('#site-cancel').on('click',function(){
 function siteCheckHandler() {
   var inputValue = $('#site-name').val();
   
-  console.log("test : "+inputValue);
-  
     if(inputValue==="daum"){
-      console.log("daum");
-      
+            
       if($('#daum').length === 0){
         var imageElement = $('<img>', {
           id: 'daum',
@@ -54,7 +51,6 @@ function siteCheckHandler() {
         alert('이미 존재하는 항목입니다.');
       }
    } else if (inputValue==="apple"){
-      console.log("apple");
       
       if($('#apple').length === 0){
         var imageElement = $('<img>', {
@@ -69,7 +65,6 @@ function siteCheckHandler() {
         alert('이미 존재하는 항목입니다.');
       }
    } else if(inputValue==="papago"){
-      console.log("papago");
       
       if($('#papago').length === 0){
         var imageElement = $('<img>', {
@@ -83,12 +78,13 @@ function siteCheckHandler() {
       } else {
         alert('이미 존재하는 항목입니다.');
       }
+   } else {
+     alert("생성할 수 없는 사이트입니다.");
    }
    $('.popup').css('display','none');
    $('.popup input[type="text"]').val('');
 }
 
-//아직 이미지 변경하면서 하나 더 생기는 오류 못고침
 $('#site-check').on('click', siteCheckHandler);
 
 function replaceImage(src, newId) {
@@ -106,22 +102,26 @@ function ximg(e){
   $(e).addClass('imgx'); 
   
   $('.imgx').on('click',function(){
-    console.log("x");
     $('.imgx').remove();
     $('.popup').css('display','none');
   });
 }
 
-$(document).on('contextmenu', '#daum', function() {
+$(document).on('contextmenu', '#daum', function(event) {
   var elementId = event.target.id;
   ximg(this);
 
+  $('.popup input#site-name').val(elementId);  
   $('.popup').find('#site-check').hide();
   $('.popup').css('display','block');
   
-  $('#site-cancel').on('click', function() {
-    console.log("우클릭: "+elementId);
+  $('#site-cancel').off('click').on('click', function() {
     imgback('/img/article/'+ elementId + '-favicon.png', elementId);
+  });
+  
+  $('#site-cancel').on('click', function() {
+    imgback('/img/article/'+ elementId + '-favicon.png', elementId);
+    $('.popup').css('display','none');
   });
   
   $('#site-update').on('click', function() {
@@ -131,7 +131,7 @@ $(document).on('contextmenu', '#daum', function() {
       replaceImage('/img/article/' + newText + '-favicon.png',newText);
       } else {
         alert('이미 존재하는 항목입니다.');
-        imgback('/img/article/'+ 'daum' + '-favicon.png','daum');
+        imgback('/img/article/'+ elementId + '-favicon.png', elementId);
       }
       
     $('.popup').css('display','none');
@@ -139,17 +139,23 @@ $(document).on('contextmenu', '#daum', function() {
   });
 });
 
-$(document).on('contextmenu', '#apple', function() {
+$(document).on('contextmenu', '#apple', function(event) {
   var elementId = event.target.id;
   ximg(this);
-
+  
+  $('.popup input#site-name').val(elementId);
   $('.popup').find('#site-check').hide();
   $('.popup').css('display','block');
   
+  $('#site-cancel').off('click').on('click', function() {
+    imgback('/img/article/'+ elementId + '-favicon.png', elementId);
+    $('.popup').css('display','none');
+  });
+  
 
   $('#site-cancel').on('click', function() {
-    console.log("우클릭: "+elementId);
     imgback('/img/article/'+ elementId + '-favicon.png', elementId);
+    $('.popup').css('display','none');
   });
   
   $('#site-update').on('click', function() {
@@ -159,24 +165,29 @@ $(document).on('contextmenu', '#apple', function() {
       replaceImage('/img/article/' + newText + '-favicon.png',newText);
     } else {
       alert('이미 존재하는 항목입니다.');
-      imgback('/img/article/'+ 'apple' + '-favicon.png','apple');
+      imgback('/img/article/'+ elementId + '-favicon.png', elementId);
     }
     $('.popup').css('display','none');
     $('.popup input[type="text"]').val('');
   });
 });
 
-$(document).on('contextmenu', '#papago', function() {
+$(document).on('contextmenu', '#papago', function(event) {
   var elementId = event.target.id;
   
   ximg(this);
   
+  $('.popup input#site-name').val(elementId);
   $('.popup').find('#site-check').hide();
   $('.popup').css('display','block');
   
-  $('#site-cancel').on('click', function() {
-    console.log("우클릭: "+elementId);
+  $('#site-cancel').off('click').on('click', function() {
     imgback('/img/article/'+ elementId + '-favicon.png', elementId);
+  });
+  
+  $('#site-cancel').on('click', function() {
+    imgback('/img/article/'+ elementId + '-favicon.png', elementId);
+    $('.popup').css('display','none');
   });
   
   $('#site-update').on('click', function() {
@@ -186,7 +197,7 @@ $(document).on('contextmenu', '#papago', function() {
       replaceImage('/img/article/' + newText + '-favicon.png',newText);
     } else {
       alert('이미 존재하는 항목입니다.');
-      imgback('/img/article/'+ 'papago' + '-favicon.png','papago');
+      imgback('/img/article/'+ elementId + '-favicon.png', elementId);
     }
     $('.popup').css('display','none');
     $('.popup input[type="text"]').val('');
