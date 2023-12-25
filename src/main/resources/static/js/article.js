@@ -115,6 +115,8 @@ $(document).on('contextmenu', '#daum', function(event) {
   $('.popup').find('#site-check').hide();
   $('.popup').css('display','block');
   
+  
+  // 이전 핸들러 제거
   $('#site-cancel').off('click').on('click', function() {
     imgback('/img/article/'+ elementId + '-favicon.png', elementId);
   });
@@ -123,6 +125,9 @@ $(document).on('contextmenu', '#daum', function(event) {
     imgback('/img/article/'+ elementId + '-favicon.png', elementId);
     $('.popup').css('display','none');
   });
+  
+  // 이전 핸들러 제거
+  $('#site-update').off('click');
   
   $('#site-update').on('click', function() {
     var newText = $('.popup input').val();
@@ -158,6 +163,8 @@ $(document).on('contextmenu', '#apple', function(event) {
     $('.popup').css('display','none');
   });
   
+  $('#site-update').off('click');
+  
   $('#site-update').on('click', function() {
     var newText = $('.popup input').val();
     
@@ -189,6 +196,8 @@ $(document).on('contextmenu', '#papago', function(event) {
     imgback('/img/article/'+ elementId + '-favicon.png', elementId);
     $('.popup').css('display','none');
   });
+  
+  $('#site-update').off('click');
   
   $('#site-update').on('click', function() {
     var newText = $('.popup input').val();
