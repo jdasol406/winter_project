@@ -17,6 +17,14 @@ public class MainController {
     
     String test = mapper.select();
     
+    return "joonggonara";
+  }
+  
+  @GetMapping("/hello")
+  public String hello() throws Exception {
+    
+    String test = mapper.select();
+    
     return "hello";
   }
   
@@ -35,5 +43,15 @@ public class MainController {
     
     return "article";
   }
+  
+  @GetMapping("/joonggonara")
+  public String joonggonara() throws Exception {
+    
+    String article = mapper.select();
+    
+    return "joonggonara";
+    
 
+  }
+  
 }

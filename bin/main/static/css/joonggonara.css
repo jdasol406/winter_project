@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+/* 네이버 나눔고딕 */
+@font-face{
+  src: url("/font/NanumGothic/NanumGothic.ttf");
+  font-family: "NanumGothic";
+}
+
+@font-face{
+  src: url("/font/NanumGothic/NanumGothicBold.ttf");
+  font-family: "NanumGothicBold";
+}
+
+@font-face{
+  src: url("/font/NanumGothic/NanumGothicLight.ttf");
+  font-family: "NanumGothicLight";
+}
+
+@font-face{
+  src: url("/font/NanumGothic/NanumGothicExtraBold.ttf");
+  font-family: "NanumGothicExtraBold";
+}
+
+@font-face{
+  src: url("/font/appleSD/AppleSDGothicNeoL.ttf");
+  font-family: "AppleSD";
+}
+
+
+body {
+  margin: 0px;
+  font-family: "AppleSD";
+  }
+
+#wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 1080px;
+  height: auto;
+}
+
+.header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+#login {
+  font-size: 12px;
+  background: none;
+  border: 1px solid #e6e6e6;
+}
+
+.nav-bar {
+  border-right: 0.5px solid #e6e6e6;
+  padding: 0 10px;
+}
+
+section {
+  margin: 15px 0;
+  height: auto;
+}
+
+main {
+  padding: 0px 15px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  word-break: break-all;
+  word-wrap: break-word;
+  word-break: break-word;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: bold;
+  margin-top: 15px;
+}
+
+th {
+  height: 40px;
+  padding: 2px;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #f2f2f2;
+  text-align: center;
+}
+
+.article_title {
+  display: block;
+  padding-right: 18px;
+  text-align: center;
+}
+
+
+#header-event-nav {
+  display: flex;
+  align-items: center;
+  width: 1079px;
+  height: 43px;
+  font-size: 13px;
+  border: 1px solid #e6e6e6;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+aside {
+  width: 200px;
+  height: auto;
+}
+
+.footer-area {
+  display: flex;
+  align-items: center;
+  width: 1080px;
+  height: 43px;
+  font-size: 13px;
+  border-top: 1px solid;
+  justify-content: space-between;
+}
+
+#footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
