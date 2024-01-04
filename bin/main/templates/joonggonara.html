@@ -45,6 +45,13 @@
         <!-- main -->
         <main>
           <div style="margin-left: 10px; font-size: 20px; font-weight: bold;">👗 여성패션/잡화</div>
+          <div style="display: flex; justify-content: flex-end; align-items: center;">
+            <input type="checkbox">  안전거래 &nbsp;
+            <input type="checkbox">  판매중 &nbsp;
+            <input type="checkbox">  공지 숨기기 &nbsp;
+            <img src="/img/joonggonara/square.png">
+            <img src="/img/joonggonara/square2.png">
+          </div>
           <table>
             <colgroup>
               <col style="width:88px">
@@ -62,9 +69,6 @@
                 <th scope="col">작성일</th>
                 <th scope="col">조회</th>
               </tr>
-              <tr style="display:none;">
-                  <th colspan="5" style="height:0px;padding: 0px;"></th>
-              </tr>
               </thead>
               <tbody>
                 <tr>
@@ -77,6 +81,11 @@
                 </tr>
               </tbody>
           </table>
+          <div style="display: flex; justify-content: flex-end; align-items: center;">
+            <a href="http://localhost:8080/writeBoard">
+              <button>글쓰기</button>              
+            </a>
+          </div>
         </main>
       </div>
     </section>

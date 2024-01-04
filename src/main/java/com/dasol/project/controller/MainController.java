@@ -20,6 +20,7 @@ public class MainController {
     return "joonggonara";
   }
   
+  
   @GetMapping("/hello")
   public String hello() throws Exception {
     
@@ -47,10 +48,18 @@ public class MainController {
   @GetMapping("/joonggonara")
   public String joonggonara() throws Exception {
     
-    String article = mapper.select();
+    String joonggonara = mapper.select();
     
     return "joonggonara";
+
+  }
+  
+  @GetMapping("/writeBoard")
+  public String writeBoard() throws Exception {
     
+    String writeBoard = mapper.select();
+    
+    return "writeBoard";
 
   }
   
