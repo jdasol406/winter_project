@@ -142,9 +142,18 @@ aside {
 
 /* writeBoard */
 .write-area {
-  
+  border: 1px solid;
+  padding: 25px;
 }
 
+.board-input {
+  width: 300px;
+  height: 35px;
+  border-radius: 5px;
+  background: #f3f1f1;
+  border: none;
+  margin-bottom: 10px;
+}
 
 
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <!-- <meta> -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/js/jquery-3.7.1.min.js"></script>
   <title></title><!-- 수정 필요 -->
    <link rel="stylesheet" type="text/css" href="/css/joonggonara.css"/>
 </head>
@@ -44,13 +44,13 @@
             <span style="margin-left: 10px; font-size: 20px; font-weight: bold;">카페 글쓰기</span>
             <span style="display: flex; justify-content: flex-end; align-items: center;">
               <button>임시등록 </button>&nbsp;
-              <button>등록</button>
+              <button id="registration-btn">등록</button>
             </span>
           </div>
-          <div>
-            <input type="text" placeholder="상품명(제목)">
-            <input type="text" placeholder="가격을 입력하세요"> 
-            <input type="text" placeholder="상품 카테고리"> 
+          <div style="display: flex; flex-direction: column;">
+            <input class="board-input" id="input-title" style="margin-top: 10px;" type="text" placeholder="상품명(제목)">
+            <input class="board-input" id="input-price" type="text" placeholder="가격을 입력하세요"> 
+            <input class="board-input" id="input-category" type="text" placeholder="상품 카테고리"> 
           </div>         
           <div class="write-area">
             ※ 카페 상품 게시글은 자동으로 중고나라 앱/사이트에 노출합니다. 노출을 원하지 않으실 경우 고객센터로 문의 바랍니다.</br>

@@ -5,6 +5,7 @@
   <!-- <meta> -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/js/jquery-3.7.1.min.js"></script>
   <title></title><!-- 수정 필요 -->
    <link rel="stylesheet" type="text/css" href="/css/joonggonara.css"/>
 </head>
@@ -52,39 +53,35 @@
             <img src="/img/joonggonara/square.png">
             <img src="/img/joonggonara/square2.png">
           </div>
-          <table>
-            <colgroup>
-              <col style="width:88px">
-              <col>
-              <col style="width:118px">
-              <col style="width:80px">
-              <col style="width:68px">
-            </colgroup>
-            <thead>
-              <tr >
-                <th>
-                </th>
-                <th scope="col"><span class="article_title">제목</span></th>
-                <th scope="col" class="th_name">작성자</th>
-                <th scope="col">작성일</th>
-                <th scope="col">조회</th>
-              </tr>
-              </thead>
-              <tbody>
+          <div id="tableContainer">
+            <table class="post-table">
+              <colgroup>
+                <col style="width:88px">
+                <col>
+                <col style="width:118px">
+                <col style="width:80px">
+                <col style="width:68px">
+              </colgroup>
+              <thead>
                 <tr>
-                  <td colspan="2">
-                    
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <th>
+                  </th>
+                  <th scope="col"><span class="article_title">제목</span></th>
+                  <th scope="col" class="th_name">작성자</th>
+                  <th scope="col">작성일</th>
+                  <th scope="col">조회</th>
                 </tr>
-              </tbody>
-          </table>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+            </table>
+          </div>
           <div style="display: flex; justify-content: flex-end; align-items: center;">
-            <a href="http://localhost:8080/writeBoard">
-              <button>글쓰기</button>              
+            <a style="text-decoration: none;" href="http://localhost:8080/writeBoard">
+              <button>글쓰기</button>
             </a>
+              <button onclick="clearTable()">테이블 비우기</button>              
           </div>
         </main>
       </div>
