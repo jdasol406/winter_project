@@ -46,6 +46,11 @@ body {
   height: auto;
 }
 
+#main-container {
+  display: flex;
+  position: relative;
+}
+
 .header-area {
   display: flex;
   justify-content: space-between;
@@ -144,6 +149,7 @@ aside {
 .write-area {
   border: 1px solid;
   padding: 25px;
+  height: 426px;
 }
 
 .board-input {
@@ -155,6 +161,14 @@ aside {
   margin-bottom: 10px;
 }
 
+.writeBoard {
+  width: 1080px;
+  height: 680px;
+  background-color: #fff;
+  position: absolute;
+  z-index: 999;
+  display: none;
+}
 
 
 
