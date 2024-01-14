@@ -102,6 +102,11 @@ $("#cancel-btn").on("click", function() {
   $('.writeBoard').css('display','none');
 });
 
+// 목록 버튼
+$("#list").on("click", function() {
+  $('.post').css('display','none');
+});
+
 
 
 

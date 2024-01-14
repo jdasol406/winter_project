@@ -170,6 +170,36 @@ aside {
   display: none;
 }
 
+/* post */
+.post {
+  width: 1080px;
+  height: 680px;
+  background-color: #fff;
+  position: absolute;
+  z-index: 999;
+  display: block;
+}
+
+.post-input {
+  width: 300px;
+  height: 35px;
+  border-radius: 5px;
+  background: #f3f1f1;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.post-area {
+  border: 1px solid;
+  padding: 25px;
+  height: 426px;
+}
+
+.post-main {
+  padding: 0px 0px 0px 20px;
+}
+
+
 
 
 
