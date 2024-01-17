@@ -69,6 +69,7 @@ $(function() {
       var title = $("#input-title").val();
       var price = $("#input-price").val();
       var category = $("#input-category").val();
+      
 
       var newRow = '<tr id="' + title + '" style="text-align: center;">';
       newRow += '<td style="text-align: center;"></td>';
@@ -79,22 +80,38 @@ $(function() {
    
      $("#tableContainer").find("tbody").append(newRow);
      
+      
+      newInputs(title);
+
+     
      $("#input-title").val('');
      $("#input-price").val('');
      $("#input-category").val('');
   });
 });
 
+//input 생성 //아니야 input의 value값을 가져와야해 수정해야해 여기 ㅠㅠㅠㅠㅠㅠㅠㅠ
+function newInputs(title){
+  var newInputsHTML = `
+    <input class="${title}" id="post-title" style="margin-top: 10px;" type="text" placeholder="상품명(제목)">
+    <input class="${title}" id="post-price" type="text" placeholder="가격을 입력하세요">
+    <input class="${title}" id="post-category" type="text" placeholder="상품 카테고리">
+  `;
+  
+  // 생성된 HTML 문자열을 post-input 클래스를 가진 요소에 추가
+  document.querySelector('.post-input').innerHTML = newInputsHTML;
+}
+
 // table 클릭 시 writeBoard open
 $(document).on("click", "#tableContainer tbody tr", function() {
   var clickedRow = $(this);
       
-  var title = clickedRow.find("td:eq(1)").text(); 
+  var postTitle = clickedRow.find("td:eq(1)").text(); 
 
-  $("#input-title").val(title);
+  $("#post-title").val(postTitle);
+  
 
-  $('#update-btn').css('display', 'block');
-  $('.writeBoard').css('display', 'block');
+  $('.post').css('display', 'block');
 });
 
 // 취소 버튼

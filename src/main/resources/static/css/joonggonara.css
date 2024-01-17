@@ -177,7 +177,7 @@ aside {
   background-color: #fff;
   position: absolute;
   z-index: 999;
-  display: block;
+  display: none;
 }
 
 .post-input {
@@ -192,7 +192,7 @@ aside {
 .post-area {
   border: 1px solid;
   padding: 25px;
-  height: 426px;
+  height: 290px;
 }
 
 .post-main {
