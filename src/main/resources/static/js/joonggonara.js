@@ -10,65 +10,61 @@ function writeBoard() {
 }
 
 // 등록 버튼
-$(function() {
-  console.log("test");
-  $("#registration-btn").on("click", function() {
-      console.log("registeration");
-      
-      $('.writeBoard').css('display','none');
-      
-      var title = $("#input-title").val();
-      var price = $("#input-price").val();
-      var category = $("#input-category").val();
-      
-      var rowCount = $("#tableContainer tbody tr").length + 1;
-      
+$("#registration-btn").on("click", function() {
+    console.log("registeration");
+    
+    $('.writeBoard').css('display','none');
+    
+    var title = $("#input-title").val();
+    var price = $("#input-price").val();
+    var category = $("#input-category").val();
+    
+    var rowCount = $("#tableContainer tbody tr").length + 1;
+    
 
-      var newRow = '<tr key="' + rowCount + '" style="text-align: center;">';
-      newRow += '<td style="text-align: center;">' + rowCount + '</td>';
-      newRow += '<td style="text-align: center;">' + title + '</td>';
-      newRow += '<td style="text-align: center;">작성자</td>';
-      newRow += '<td style="text-align: center;">작성일</td>';
-      newRow += '<td style="text-align: center;">조회</td>';
-      
-      
-     $("#tableContainer").find("tbody").prepend(newRow);
-     
-     // 행 정보를 하나의 배열로 묶어서 배열에 추가
-     var obj = {
-       rowCount: rowCount,
-       title: title,
-       price: price,
-       category: category
-     }
-     postArray.push(obj);
-      
-     $("#input-title").val('');
-     $("#input-price").val('');
-     $("#input-category").val('');
-     
-  });
+    var newRow = '<tr key="' + rowCount + '" style="text-align: center;">';
+    newRow += '<td style="text-align: center;">' + rowCount + '</td>';
+    newRow += '<td style="text-align: center;">' + title + '</td>';
+    newRow += '<td style="text-align: center;">작성자</td>';
+    newRow += '<td style="text-align: center;">작성일</td>';
+    newRow += '<td style="text-align: center;">조회</td>';
+    
+    
+   $("#tableContainer").find("tbody").prepend(newRow);
+   
+   // 행 정보를 하나의 배열로 묶어서 배열에 추가
+   var obj = {
+     rowCount: rowCount,
+     title: title,
+     price: price,
+     category: category
+   }
+   postArray.push(obj);
+    
+   $("#input-title").val('');
+   $("#input-price").val('');
+   $("#input-category").val('');
+   
 });
 
-
+// 이벤트 위임으로 동적으로 추가되는 tr요소들에 대한 이벤트를 처리할 수 있도록 해줌
 $("#tableContainer tbody").on("click", "tr", function() {
-    var clickedRowId = $(this).attr("key");
+  var clickedRowId = $(this).attr("key");
 
-    var clickedObject = postArray.find(function (obj) {
-        return obj.rowCount == clickedRowId;
-     });
+  var target = event.target;
+  console.log("target : "+target);  
+  //target : [object HTMLTableCellElement] <- console창에 이렇게 뜸
 
-    console.log(clickedObject);
-    console.log(clickedObject.title);
-    console.log(clickedObject.price);
-    console.log(clickedObject.category);
-    
-    $("#post-title").val(clickedObject.title);
-    $("#post-price").val(clickedObject.price);
-    $("#post-category").val(clickedObject.category);
-    
-    
-    $('.post').css('display', 'block');
+  var clickedObject = postArray.find(function (obj) {
+      return obj.rowCount == clickedRowId;
+   });
+  
+  $("#post-title").val(clickedObject.title);
+  $("#post-price").val(clickedObject.price);
+  $("#post-category").val(clickedObject.category);
+  
+  
+  $('.post').css('display', 'block');
     
 });
 
