@@ -1,17 +1,23 @@
 var postArray = [];
+var selectedRow;
+
+//input 비우는 함수
+function resetInput(){
+  $("#input-title").val('');
+  $("#input-price").val('');
+  $("#input-category").val('');  
+}
 
 // 글쓰기 버튼
 function writeBoard() {
-  $("#input-title").val('');
-  $("#input-price").val('');
-  $("#input-category").val('');
-     
+  resetInput();
+  
   $('.writeBoard').css('display','block');
 }
 
+
 // 등록 버튼
 $("#registration-btn").on("click", function() {
-    console.log("registeration");
     
     $('.writeBoard').css('display','none');
     
@@ -41,9 +47,7 @@ $("#registration-btn").on("click", function() {
    }
    postArray.push(obj);
     
-   $("#input-title").val('');
-   $("#input-price").val('');
-   $("#input-category").val('');
+   resetInput();
    
 });
 
@@ -51,14 +55,12 @@ $("#registration-btn").on("click", function() {
 $("#tableContainer tbody").on("click", "tr", function() {
   var clickedRowId = $(this).attr("key");
 
-  var target = event.target;
-  console.log("target : "+target);  
-  //target : [object HTMLTableCellElement] <- console창에 이렇게 뜸
-
   var clickedObject = postArray.find(function (obj) {
       return obj.rowCount == clickedRowId;
    });
-  
+   
+   selectedRow = clickedObject.rowCount;
+   
   $("#post-title").val(clickedObject.title);
   $("#post-price").val(clickedObject.price);
   $("#post-category").val(clickedObject.category);
@@ -77,6 +79,19 @@ $("#cancel-btn").on("click", function() {
 $("#list").on("click", function() {
   $('.post').css('display','none');
 });
+
+// 삭제 버튼
+$("#delete-btn").on("click", function() {
+  console.log(selectedRow);
+  
+  // selectedRow에 저장된 key 값을 가진 tr 삭제
+  $("#tableContainer tbody tr[key='" + selectedRow + "']").remove();
+  
+  
+  $('.post').css('display','none');
+});
+
+
 
 
 
