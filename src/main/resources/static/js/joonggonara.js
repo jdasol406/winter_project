@@ -1,4 +1,5 @@
 var postArray = [];
+
 var selectedRow;
 
 //input 비우는 함수
@@ -84,11 +85,33 @@ $("#list").on("click", function() {
 $("#delete-btn").on("click", function() {
   console.log(selectedRow);
   
-  // selectedRow에 저장된 key 값을 가진 tr 삭제
+  // selectedRow와 같은 key 값을 가진 tr 삭제
   $("#tableContainer tbody tr[key='" + selectedRow + "']").remove();
   
   
   $('.post').css('display','none');
+});
+
+// 수정 버튼
+$("#update-btn").on("click", function() {
+  var title = $("#post-title").val();
+  var price = $("#post-price").val();
+  var category = $("#post-category").val();
+  
+  console.log(title);
+  
+  // 입력된 input value로 배열 값을 바꿔버림
+  postArray[selectedRow-1].title = title;
+  postArray[selectedRow-1].price = price;
+  postArray[selectedRow-1].category = category;
+  
+  var selector = "#tableContainer tbody tr[key='" + selectedRow + "'] td:eq(1)";
+  
+  // 선택자를 사용하여 해당 td의 내용 업데이트
+  $(selector).html(title);
+
+  $('.post').css('display','none');
+  
 });
 
 
