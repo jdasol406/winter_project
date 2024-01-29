@@ -1,7 +1,5 @@
 var postArray = [];
 
-var selectedRow;
-
 //input 비우는 함수
 function resetInput(){
   $("#input-title").val('');
@@ -28,7 +26,18 @@ $("#registration-btn").on("click", function() {
     
     var rowCount = $("#tableContainer tbody tr").length + 1;
     
+    // 행 정보를 하나의 배열로 묶어서 배열에 추가
+   var obj = {
+     rowCount: rowCount,
+     title: title,
+     price: price,
+     category: category
+   }
+   postArray.push(obj);
+    
+   resetInput();
 
+    // 이렇게 테이블을 만들지 말고 배열 안의 값을 가져와서 ...
     var newRow = '<tr key="' + rowCount + '" style="text-align: center;">';
     newRow += '<td style="text-align: center;">' + rowCount + '</td>';
     newRow += '<td style="text-align: center;">' + title + '</td>';
@@ -39,16 +48,6 @@ $("#registration-btn").on("click", function() {
     
    $("#tableContainer").find("tbody").prepend(newRow);
    
-   // 행 정보를 하나의 배열로 묶어서 배열에 추가
-   var obj = {
-     rowCount: rowCount,
-     title: title,
-     price: price,
-     category: category
-   }
-   postArray.push(obj);
-    
-   resetInput();
    
 });
 
@@ -60,14 +59,33 @@ $("#tableContainer tbody").on("click", "tr", function() {
       return obj.rowCount == clickedRowId;
    });
    
-   selectedRow = clickedObject.rowCount;
    
   $("#post-title").val(clickedObject.title);
   $("#post-price").val(clickedObject.price);
   $("#post-category").val(clickedObject.category);
   
+  $("#post-title").prop('readOnly', true);
+  $("#post-price").prop('readOnly', true);
+  $("#post-category").prop('readOnly', true);
+
+  $('#update-btn').css('display','none');
   
   $('.post').css('display', 'block');
+  console.log("clickedRowId "+clickedRowId);
+  console.log(JSON.stringify(postArray, null, 2));
+  
+  // 삭제 버튼
+  $("#delete-btn").on("click", function() {
+    console.log("clickedRowId "+clickedRowId);
+    var indexToRemove = postArray.findIndex(obj => obj.rowCount === parseInt(clickedRowId));
+    
+    postArray.splice(indexToRemove, 1);  // indexToRemove에서 1개의 요소를 삭제
+    
+    $("#tableContainer tbody tr[key='" + clickedRowId + "']").remove();
+    
+    $('.post').css('display','none');
+
+  });
     
 });
 
@@ -81,16 +99,16 @@ $("#list").on("click", function() {
   $('.post').css('display','none');
 });
 
-// 삭제 버튼
-$("#delete-btn").on("click", function() {
-  console.log(selectedRow);
+// 수정하기 버튼
+$("#update-go").on("click", function() {
+  $('#update-btn').css('display','block');
+  $('.comment').css('display','none');
   
-  // selectedRow와 같은 key 값을 가진 tr 삭제
-  $("#tableContainer tbody tr[key='" + selectedRow + "']").remove();
+  $("#post-title").prop('readOnly', false);
+  $("#post-price").prop('readOnly', false);
+  $("#post-category").prop('readOnly', false);
   
-  
-  $('.post').css('display','none');
-});
+})
 
 // 수정 버튼
 $("#update-btn").on("click", function() {

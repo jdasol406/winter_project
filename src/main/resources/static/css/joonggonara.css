@@ -159,6 +159,15 @@ aside {
   background: #f3f1f1;
   border: none;
   margin-bottom: 10px;
+  outline: none;
+}
+
+.comment-input {
+  width: 834px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #f3f1f1;
+  margin-bottom: 10px;
 }
 
 .writeBoard {
@@ -192,7 +201,7 @@ aside {
 .post-area {
   border: 1px solid;
   padding: 25px;
-  height: 290px;
+  height: 160px;
 }
 
 .post-main {
