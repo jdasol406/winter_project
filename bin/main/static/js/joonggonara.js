@@ -47,20 +47,25 @@ function inputReadOnly(bool){
 
 // 등록 버튼
 $("#registration-btn").on("click", function() {
+  $('#update-go').css('display','block');
   $(".writeBoard").css("display","none");
     
   var title = $("#input-title").val();
   var price = $("#input-price").val();
   var category = $("#input-category").val(); 
   var rowCount = $("#tableContainer tbody tr").length + 1;
+  var hidden = $("#tableContainer tbody tr").length + 1;
 
   var obj = { // 행 정보를 하나의 배열로 묶어서 배열에 추가
     rowCount,
     title,
     price,
-    category
+    category,
+    hidden
   };
   postArray.push(obj);
+  
+  console.log(JSON.stringify(postArray, null, 2));
 
   resetInput();
   createTable(postArray); 
@@ -73,7 +78,7 @@ $("#tableContainer tbody").on("click", "tr", function() {
   var clickedObject = postArray.find(function (obj) {
     return obj.rowCount == clickedRowId;
   });
-   
+  
   $("#post-title").val(clickedObject.title);
   $("#post-price").val(clickedObject.price);
   $("#post-category").val(clickedObject.category);
@@ -84,18 +89,21 @@ $("#tableContainer tbody").on("click", "tr", function() {
   $('#update-btn').css('display','none');
   $('.post').css('display', 'block');
 
-  
 });
 
-// 삭제 버튼 여러번 바인딩...?ㅡㅡ 되는걸 막으려고 .off("click")을 넣음
+// 삭제 버튼
 $("#delete-btn").on("click", function() {
-  console.log("clickedRowId del "+clickedRowId);
-  var indexToRemove = postArray.findIndex(obj => obj.rowCount === parseInt(clickedRowId));
+  var hidden = $("#hidden-key").val();
+  console.log("hidden : "+hidden);
+  
+  var indexToRemove = postArray.findIndex(obj => obj.rowCount === parseInt(hidden));
   
   postArray.splice(indexToRemove, 1);  // indexToRemove에서 1개의 요소를 삭제
   
   //$("#tableContainer tbody tr[key='" + clickedRowId + "']").remove();
   createTable(postArray);
+  
+  console.log(JSON.stringify(postArray, null, 2));
   
   $('.post').css('display','none');
 
@@ -106,13 +114,16 @@ $("#update-btn").on("click", function() {
   var title = $("#post-title").val();
   var price = $("#post-price").val();
   var category = $("#post-category").val();
+  var hidden = $("#hidden-key").val();
   
   // 입력된 input value로 배열 값을 바꿔버림
-  postArray[clickedRowId-1].title = title;
-  postArray[clickedRowId-1].price = price;
-  postArray[clickedRowId-1].category = category;
+  postArray[hidden-1].title = title;
+  postArray[hidden-1].price = price;
+  postArray[hidden-1].category = category;
   
   createTable(postArray);
+  
+  $('#update-go').css('display','block');
 
   $('.post').css('display','none');
   
@@ -126,6 +137,7 @@ $("#cancel-btn").on("click", function() {
 // 목록 버튼
 $("#list").on("click", function() {
   $('.post').css('display','none');
+  $('#update-go').css('display','block');
 });
 
 // 수정하기 버튼
