@@ -163,7 +163,7 @@ aside {
 }
 
 .comment-input {
-  width: 834px;
+  width: 787px;
   height: 35px;
   border-radius: 5px;
   border: 1px solid #f3f1f1;
@@ -201,11 +201,19 @@ aside {
 .post-area {
   border: 1px solid;
   padding: 25px;
-  height: 160px;
+  height: 109px;
 }
 
 .post-main {
   padding: 0px 0px 0px 20px;
+}
+
+.addComment {
+  width: 793px;
+  height: 39px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 7px;
 }
 
 
