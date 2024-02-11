@@ -26,25 +26,30 @@ function createTable(array) {
   var tbody = $("#tableContainer").find("tbody");
   
   // 배열 내의 각 객체에 대해 행을 생성
-  for (var i = 0; i < array.length; i++) {
-    var row = array[i];
-    
+  $.each(array, function(index, row) {
     var newRow = '<tr key="' + row.hiddenValue + '" style="text-align: center;">';
-    newRow += '<td style="text-align: center;">' + row.hiddenValue + '</td>';
+    newRow += '<td style="text-align: center;">' + (index+1) + '</td>';  // Index를 출력
     newRow += '<td style="text-align: center;">' + row.title + '</td>';
     newRow += '<td style="text-align: center;">작성자</td>';
     newRow += '<td style="text-align: center;">작성일</td>';
     newRow += '<td style="text-align: center;">조회</td>';
     
     tbody.prepend(newRow);
-  }
+  });
 }
+
 
 // inputReadOnly 함수
 function inputReadOnly(bool){
   $("#post-title").prop('readOnly', bool);
   $("#post-price").prop('readOnly', bool);
   $("#post-category").prop('readOnly', bool);
+}
+
+function comment() {
+  $(".addComment").remove();
+  $("#post-comment").val('');
+  $('.comment').css('display','block');
 }
 
 // 등록 버튼
@@ -57,10 +62,11 @@ $("#registration-btn").on("click", function() {
   var category = $("#input-category").val(); 
 
   hiddenValue++;
-  // Hidden 값 업데이트
-  $("#hidden-key").val(hiddenValue);
-  // 콘솔에 출력 (테스트용)
-  console.log("Hidden 값: " + hiddenValue);
+//  // Hidden 값 업데이트
+//  $("#hidden-key").val(hiddenValue);
+//  // 콘솔에 출력 (테스트용)
+//  console.log("Hidden 값: " + hiddenValue);
+  
 
   var obj = { // 행 정보를 하나의 배열로 묶어서 배열에 추가
     title,
@@ -75,6 +81,10 @@ $("#registration-btn").on("click", function() {
   $(".addComment").remove();
   resetInput();
   createTable(postArray); 
+  
+   $.each(postArray, function(index, value) {
+    console.log('Index: ' + index + ', Value: ' + value);
+  });
 });
 
 // 댓글등록 버튼
@@ -135,7 +145,9 @@ $("#tableContainer tbody").on("click", "tr", function() {
 $("#delete-btn").on("click", function() {
   var hidden = $("#hidden-key").val();
 
-  var indexToRemove = postArray.findIndex(obj => obj.hiddenValue === parseInt(hidden));
+  var indexToRemove = postArray.findIndex(function(obj) {
+  return obj.hiddenValue === parseInt(hidden);
+});
   
   postArray.splice(indexToRemove, 1);  // indexToRemove에서 1개의 요소를 삭제
   
@@ -145,9 +157,7 @@ $("#delete-btn").on("click", function() {
   
   $('.post').css('display','none');
   
-  $(".addComment").remove();
-  $("#post-comment").val('');
-  $('.comment').css('display','block');
+  comment();
 
 });
   
@@ -159,6 +169,7 @@ $("#update-btn").on("click", function() {
   var hidden = $("#hidden-key").val();
   
   // 입력된 input value로 배열 값을 바꿔버림
+  // 여기가 잘못됨
   postArray[hidden-1].title = title;
   postArray[hidden-1].price = price;
   postArray[hidden-1].category = category;
@@ -171,9 +182,10 @@ $("#update-btn").on("click", function() {
 
   $('.post').css('display','none');
   
-  $(".addComment").remove();
-  $("#post-comment").val('');
-  $('.comment').css('display','block');
+//  $(".addComment").remove();
+//  $("#post-comment").val('');
+//  $('.comment').css('display','block');
+  comment();
   
 });
 
@@ -188,18 +200,20 @@ $("#cancel-btn").on("click", function() {
 $("#list").on("click", function() {
   $('.post').css('display','none');
   $('#update-go').css('display','block');
-  $(".addComment").remove();
-  $("#post-comment").val('');
-  $('.comment').css('display','block');
+//  $(".addComment").remove();
+//  $("#post-comment").val('');
+//  $('.comment').css('display','block');
+comment();
 });
 
 // 수정하기 버튼
 $("#update-go").on("click", function() {
   $('#update-btn').css('display','block');
   $('.comment').css('display','none');
-  $('#update-go').css('display','none');
-  $(".addComment").remove();
-  $("#post-comment").val('');
+//  $('#update-go').css('display','none');
+//  $(".addComment").remove();
+//  $("#post-comment").val('');
+  comment();
   
   inputReadOnly(false);
   
