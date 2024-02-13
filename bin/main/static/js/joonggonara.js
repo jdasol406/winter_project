@@ -7,9 +7,7 @@ $("#hidden-key").val(hiddenValue);
 /* function */
 //input 비우는 함수
 function resetInput(){
-  $("#input-title").val('');
-  $("#input-price").val('');
-  $("#input-category").val('');  
+  $("#input-title, #input-price, #input-category").val('');
 }
 
 // 글쓰기 버튼
@@ -21,18 +19,17 @@ function writeBoard() {
 
 // table만드는 함수
 function createTable(array) {
-  $("#tableContainer tbody").empty();
+  var tbody = $("#tableContainer tbody").empty();
   
-  var tbody = $("#tableContainer").find("tbody");
-  
-  // 배열 내의 각 객체에 대해 행을 생성
-  $.each(array, function(index, row) {
-    var newRow = '<tr key="' + row.hiddenValue + '" style="text-align: center;">';
-    newRow += '<td style="text-align: center;">' + (index+1) + '</td>';  // Index를 출력
-    newRow += '<td style="text-align: center;">' + row.title + '</td>';
-    newRow += '<td style="text-align: center;">작성자</td>';
-    newRow += '<td style="text-align: center;">작성일</td>';
-    newRow += '<td style="text-align: center;">조회</td>';
+  // 배열 내의 각 객체에 대해 행을 생성 <- 여기 고쳐야함
+  $.each(array, function (index, row) {
+    var newRow = `<tr key="${row.hiddenValue}" style="text-align: center;">
+                    <td style="text-align: center;">${index + 1}</td>
+                    <td style="text-align: center;">${row.title}</td>
+                    <td style="text-align: center;">작성자</td>
+                    <td style="text-align: center;">작성일</td>
+                    <td style="text-align: center;">조회</td>
+                  </tr>`;
     
     tbody.prepend(newRow);
   });
@@ -46,12 +43,6 @@ function inputReadOnly(bool){
   $("#post-category").prop('readOnly', bool);
 }
 
-function comment() {
-  $(".addComment").remove();
-  $("#post-comment").val('');
-  $('.comment').css('display','block');
-}
-
 // 등록 버튼
 $("#registration-btn").on("click", function() {
   $('#update-go').css('display','block');
@@ -62,12 +53,7 @@ $("#registration-btn").on("click", function() {
   var category = $("#input-category").val(); 
 
   hiddenValue++;
-//  // Hidden 값 업데이트
-//  $("#hidden-key").val(hiddenValue);
-//  // 콘솔에 출력 (테스트용)
-//  console.log("Hidden 값: " + hiddenValue);
   
-
   var obj = { // 행 정보를 하나의 배열로 묶어서 배열에 추가
     title,
     price,
@@ -157,7 +143,9 @@ $("#delete-btn").on("click", function() {
   
   $('.post').css('display','none');
   
-  comment();
+  $(".addComment").remove();
+  $("#post-comment").val('');
+  $('.comment').css('display','block');
 
 });
   
@@ -167,13 +155,19 @@ $("#update-btn").on("click", function() {
   var price = $("#post-price").val();
   var category = $("#post-category").val();
   var hidden = $("#hidden-key").val();
+
+  // hidden 값을 사용하여 해당 객체를 찾음
+  var postToUpdate = postArray.find(function(obj) {
+    return obj.hiddenValue === parseInt(hidden);
+  });
   
-  // 입력된 input value로 배열 값을 바꿔버림
-  // 여기가 잘못됨
-  postArray[hidden-1].title = title;
-  postArray[hidden-1].price = price;
-  postArray[hidden-1].category = category;
-  
+  // 해당 객체가 존재하면 속성을 업데이트
+  if (postToUpdate) {
+    postToUpdate.title = title;
+    postToUpdate.price = price;
+    postToUpdate.category = category;
+  }
+
   createTable(postArray);
   
   $('#update-go').css('display','block');
@@ -182,10 +176,9 @@ $("#update-btn").on("click", function() {
 
   $('.post').css('display','none');
   
-//  $(".addComment").remove();
-//  $("#post-comment").val('');
-//  $('.comment').css('display','block');
-  comment();
+  $(".addComment").remove();
+  $("#post-comment").val('');
+  $('.comment').css('display','block');
   
 });
 
@@ -200,20 +193,18 @@ $("#cancel-btn").on("click", function() {
 $("#list").on("click", function() {
   $('.post').css('display','none');
   $('#update-go').css('display','block');
-//  $(".addComment").remove();
-//  $("#post-comment").val('');
-//  $('.comment').css('display','block');
-comment();
+  $(".addComment").remove();
+  $("#post-comment").val('');
+  $('.comment').css('display','block');
 });
 
 // 수정하기 버튼
 $("#update-go").on("click", function() {
   $('#update-btn').css('display','block');
   $('.comment').css('display','none');
-//  $('#update-go').css('display','none');
-//  $(".addComment").remove();
-//  $("#post-comment").val('');
-  comment();
+  $('#update-go').css('display','none');
+  $(".addComment").remove();
+  $("#post-comment").val('');
   
   inputReadOnly(false);
   
