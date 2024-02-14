@@ -14,7 +14,7 @@ function resetInput(){
 function writeBoard() {
   resetInput();
   
-  $('.writeBoard').css('display','block');
+  $(".writeBoard").show();
 }
 
 // table만드는 함수
@@ -38,15 +38,15 @@ function createTable(array) {
 
 // inputReadOnly 함수
 function inputReadOnly(bool){
-  $("#post-title").prop('readOnly', bool);
-  $("#post-price").prop('readOnly', bool);
-  $("#post-category").prop('readOnly', bool);
+  $("#post-title").prop("readOnly", bool);
+  $("#post-price").prop("readOnly", bool);
+  $("#post-category").prop("readOnly", bool);
 }
 
 // 등록 버튼
 $("#registration-btn").on("click", function() {
-  $('#update-go').css('display','block');
-  $(".writeBoard").css("display","none");
+  $("#update-go").show();
+  $(".writeBoard").hide();
     
   var title = $("#input-title").val();
   var price = $("#input-price").val();
@@ -68,14 +68,11 @@ $("#registration-btn").on("click", function() {
   resetInput();
   createTable(postArray); 
   
-   $.each(postArray, function(index, value) {
-    console.log('Index: ' + index + ', Value: ' + value);
-  });
 });
 
 // 댓글등록 버튼
 $("#comment-registration").on("click", function() {
-  $(".writeBoard").css("display","none");
+  $(".writeBoard").hide();
     
   var comment = $("#post-comment").val();
   var hidden = $("#hidden-key").val();
@@ -91,7 +88,7 @@ $("#comment-registration").on("click", function() {
   
   var comment = $("#post-comment").val();
 
-  $('<div>').addClass('addComment').text(comment).prependTo('.comment-area');
+  $("<div>").addClass("addComment").text(comment).prependTo(".comment-area");
 
   
   $("#post-comment").val('');  
@@ -102,7 +99,7 @@ $("#tableContainer tbody").on("click", "tr", function() {
   var clickedRowId = $(this).attr("key");
 
   var clickedObject = postArray.find(function (obj) {
-    return obj.hiddenValue == clickedRowId;
+    return obj.hiddenValue === parseInt(clickedRowId);
   });
   
   $("#post-title").val(clickedObject.title);
@@ -117,13 +114,13 @@ $("#tableContainer tbody").on("click", "tr", function() {
 
   for (var i = 0; i < filteredComments.length; i++) {
     var comment = filteredComments[i];
-  $('<div>').addClass('addComment').text(comment.comment).prependTo('.comment-area');
-}
+  $("<div>").addClass("addComment").text(comment.comment).prependTo(".comment-area");
+  }
   
   inputReadOnly(true);
 
-  $('#update-btn').css('display','none');
-  $('.post').css('display', 'block');
+  $("#update-btn").hide();
+  $(".post").show();
 
 });
 
@@ -133,19 +130,19 @@ $("#delete-btn").on("click", function() {
 
   var indexToRemove = postArray.findIndex(function(obj) {
   return obj.hiddenValue === parseInt(hidden);
-});
+  });
   
-  postArray.splice(indexToRemove, 1);  // indexToRemove에서 1개의 요소를 삭제
+  postArray.splice(indexToRemove, 1); // indexToRemove에서 1개의 요소를 삭제
   
   createTable(postArray);
   
   console.log(JSON.stringify(postArray, null, 2));
   
-  $('.post').css('display','none');
+  $(".post").hide();
   
   $(".addComment").remove();
   $("#post-comment").val('');
-  $('.comment').css('display','block');
+  $(".comment").show();
 
 });
   
@@ -170,39 +167,39 @@ $("#update-btn").on("click", function() {
 
   createTable(postArray);
   
-  $('#update-go').css('display','block');
+  $("#update-go").show();
   
   console.log(JSON.stringify(postArray, null, 2));
 
-  $('.post').css('display','none');
+  $(".post").hide();
   
   $(".addComment").remove();
   $("#post-comment").val('');
-  $('.comment').css('display','block');
+  $(".comment").show();
   
 });
 
 // 취소 버튼
 $("#cancel-btn").on("click", function() {
-  $('.writeBoard').css('display','none');
+  $(".writeBoard").hide();
   $(".addComment").remove();
   $("#post-comment").val('');
 });
 
 // 목록 버튼
 $("#list").on("click", function() {
-  $('.post').css('display','none');
-  $('#update-go').css('display','block');
+  $(".post").css('display','none');
+  $("#update-go").show();
   $(".addComment").remove();
   $("#post-comment").val('');
-  $('.comment').css('display','block');
+  $(".comment").show();
 });
 
 // 수정하기 버튼
 $("#update-go").on("click", function() {
-  $('#update-btn').css('display','block');
-  $('.comment').css('display','none');
-  $('#update-go').css('display','none');
+  $("#update-btn").show();
+  $(".comment").hide();
+  $("#update-go").hide();
   $(".addComment").remove();
   $("#post-comment").val('');
   
