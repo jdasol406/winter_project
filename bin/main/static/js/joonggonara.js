@@ -21,7 +21,7 @@ function writeBoard() {
 function createTable(array) {
   var tbody = $("#tableContainer tbody").empty();
   
-  // 배열 내의 각 객체에 대해 행을 생성 <- 여기 고쳐야함
+  // 배열 내의 각 객체에 대해 행을 생성
   $.each(array, function (index, row) {
     var newRow = `<tr key="${row.hiddenValue}" style="text-align: center;">
                     <td style="text-align: center;">${index + 1}</td>
@@ -129,7 +129,7 @@ $("#delete-btn").on("click", function() {
   var hidden = $("#hidden-key").val();
 
   var indexToRemove = postArray.findIndex(function(obj) {
-  return obj.hiddenValue === parseInt(hidden);
+    return obj.hiddenValue === parseInt(hidden);
   });
   
   postArray.splice(indexToRemove, 1); // indexToRemove에서 1개의 요소를 삭제
