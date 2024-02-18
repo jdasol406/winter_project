@@ -20,19 +20,21 @@ function writeBoard() {
 // table만드는 함수
 function createTable(array) {
   var tbody = $("#tableContainer tbody").empty();
+  var rowsHTML = "";
   
-  // 배열 내의 각 객체에 대해 행을 생성
-  $.each(array, function (index, row) {
+  // 배열의 역순으로 각 객체에 대해 행을 생성
+  for (var i = array.length - 1; i >= 0; i--) {
+    var row = array[i];
     var newRow = `<tr key="${row.hiddenValue}" style="text-align: center;">
-                    <td style="text-align: center;">${index + 1}</td>
+                    <td style="text-align: center;">${i + 1}</td>
                     <td style="text-align: center;">${row.title}</td>
                     <td style="text-align: center;">작성자</td>
                     <td style="text-align: center;">작성일</td>
                     <td style="text-align: center;">조회</td>
                   </tr>`;
-    
-    tbody.prepend(newRow);
-  });
+    rowsHTML += newRow;
+  }
+  tbody.prepend(rowsHTML);
 }
 
 
